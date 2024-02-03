@@ -1,0 +1,6 @@
+/node_modules
+/apps/back/node_modules
+/apps/front/node_modules
+
+/apps/back/.env
+/apps/front/.env

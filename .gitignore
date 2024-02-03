@@ -1,6 +1,14 @@
+# Node Modules
 /node_modules
 /apps/back/node_modules
 /apps/front/node_modules
+/packages/types/node_modules
 
-/apps/back/.env
-/apps/front/.env
+# Dist
+/apps/back/dist
+/apps/front/dist
+/packages/types/dist
+
+# .env
+apps/back/.env
+apps/front/.env

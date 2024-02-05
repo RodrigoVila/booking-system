@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "cremis";
+  src: url("./fonts/CREMISSS.otf");
+}
+
+@font-face {
+  font-family: "cremisSig";
+  src: url("./fonts/CREMISS.signature.otf");
+}
+
+@font-face {
+  font-family: "robotoBold";
+  src: url("./fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+  font-family: "robotoLight";
+  src: url("./fonts/Roboto-Light.ttf");
+}
+
+@font-face {
+  font-family: "roboto";
+  src: url("./fonts/Roboto-Regular.ttf");
+}
+
+html {
+  scroll-behavior: smooth;
+}
+p,
+span,
+div {
+  font-family: roboto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: cremis;
+}

@@ -19,20 +19,17 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+
+    /* Paths */
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["./components/*"],
+      "@hooks": ["./hooks/index.ts"],
+      "@pages/*": ["./pages/*"],
+      "@types": ["./types.d.ts"],
+    },
   },
 
-  /* Paths */
-  "baseUrl": "./src",
-  "paths": {
-    "@assets/*": ["./assets/*"],
-    "@components/*": ["./components/*"],
-    "@context/*": ["./context/*"],
-    "@constants": ["./constants/index.ts"],
-    "@pages/*": ["./pages/*"],
-    "@hooks": ["./hooks/index.ts"],
-    "@types": ["./types.d.ts"],
-    "@utils/*": ["./utils/*"],
-  },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
 }

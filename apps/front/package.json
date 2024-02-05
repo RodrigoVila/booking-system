@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^11.0.3",
+    "lodash.throttle": "^4.1.1",
     "react": "^18.2.0",
     "react-calendar": "^4.8.0",
     "react-dom": "^18.2.0",
@@ -17,6 +19,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/lodash.throttle": "^4.1.9",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.20.0",
@@ -33,9 +36,9 @@
     "postcss": "^8.4.33",
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "shared-types": "workspace:*",
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "^3.4.1",
-    "types": "workspace:*",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
   }

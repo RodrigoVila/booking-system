@@ -55,13 +55,9 @@
                 [
                   "^@context",
                   "^@hooks",
-                  "^@features",
-                  "^@constants",
                   "^@components",
-                  "^@layout",
-                  "^@utils",
-                  "^@types",
-                  "^@assets"
+                  "^@constants",
+                  "^@utils"
                 ],
                 // Parent imports. Put `..` last.
                 ["^\\.\\.(?!/?$)", "^\\.\\./?$"],

@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ServiceType } from "shared-types";
 
-import { Footer } from "./components/Footer";
+import { Footer } from "@components/Footer";
 import { Navbar } from "./components/Navbar";
 import { useScrollPosition } from "@hooks";
 
@@ -12,6 +13,51 @@ import { Contact } from "./pages/Contact";
 
 const client = new QueryClient();
 
+const DESC =
+  "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore provident eligendi suscipit in corporis ut ullam quae a laudantium? Utfugit at exercitationem dolorem eaque autem tempora, recusandae neque libero.";
+
+const services: ServiceType[] = [
+  {
+    title: "Relaxing Spirit",
+    imgSrc: "service-1.jpg",
+    description: DESC,
+    options: [
+      { duration: 60, price: 100 },
+      { duration: 90, price: 150 },
+    ],
+  },
+  {
+    title: "Neck & Shoulders",
+    imgSrc: "service-4.jpg",
+    description: DESC,
+    options: [{ duration: 30, price: 70 }],
+  },
+  {
+    title: "Pregnancy Care",
+    imgSrc: "service-3.jpg",
+    description: DESC,
+    options: [
+      { duration: 60, price: 100 },
+      { duration: 90, price: 150 },
+    ],
+  },
+  {
+    title: "Postnatal Care",
+    imgSrc: "service-2.jpg",
+    description: DESC,
+    options: [{ duration: 60, price: 100 }],
+  },
+  {
+    title: "Deep Tissue",
+    imgSrc: "service-5.jpg",
+    description: DESC,
+    options: [
+      { duration: 60, price: 120 },
+      { duration: 90, price: 180 },
+    ],
+  },
+];
+
 const App = () => {
   const { isScrollOverHalfScreen } = useScrollPosition();
 
@@ -21,8 +67,8 @@ const App = () => {
         <Navbar isScrollOverHalfScreen={isScrollOverHalfScreen} />
         <Home isScrollOverHalfScreen={isScrollOverHalfScreen} />
         <About />
-        <Services />
-        <Booking />
+        <Services services={services} />
+        <Booking services={services} />
         <Contact />
         <Footer />
       </main>

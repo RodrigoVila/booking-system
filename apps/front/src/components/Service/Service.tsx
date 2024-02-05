@@ -1,22 +1,15 @@
-import { Button } from "@components/Button"; // Ensure this import path is correct
+import { Button } from "@components/Button";
 import { useOnScreenAnimation } from "@hooks";
 import { motion, useAnimation } from "framer-motion";
-import React from "react";
-import { twMerge } from "tailwind-merge";
 
-type ServiceProps = {
-  title: string;
-  description: string;
-  durations: number[];
-  imgSrc: string;
-};
+import { ServiceType } from "shared-types";
 
 export const Service = ({
   title,
   description,
-  durations,
+  options,
   imgSrc,
-}: ServiceProps) => {
+}: ServiceType) => {
   const { ref, isVisible } = useOnScreenAnimation();
   const controls = useAnimation();
 
@@ -56,9 +49,9 @@ export const Service = ({
         >
           <div className="flex flex-col items-center gap-3 p-4">
             <div className="flex items-center gap-2">
-              {durations.map((duration, index) => (
+              {options.map((option, index) => (
                 <h6 key={index} className="text-2xl">
-                  {`${duration} ${index !== durations.length - 1 ? "/" : "minutes"}`}
+                  {`${option.duration} ${index !== options.length - 1 ? "/" : "minutes"}`}
                 </h6>
               ))}
             </div>

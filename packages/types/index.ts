@@ -9,4 +9,17 @@ export const BookingSchema = z.object({
   notes: z.string().optional(),
 });
 
+export const ServiceSchema = z.object({
+  title: z.string(),
+  imgSrc: z.string(),
+  description: z.string(),
+  options: z.array(
+    z.object({
+      duration: z.number(),
+      price: z.number(),
+    })
+  ),
+});
+
 export type BookingType = z.infer<typeof BookingSchema>;
+export type ServiceType = z.infer<typeof ServiceSchema>;

@@ -3,12 +3,14 @@ import { twMerge } from "tailwind-merge";
 type TitleLogoType = {
   type: "navbar" | "home";
   isScrollOverHalfScreen: boolean;
+  onClick?: () => void;
   className?: string;
 };
 
 export const TitleLogo = ({
   type,
   isScrollOverHalfScreen,
+  onClick,
   className,
 }: TitleLogoType) => {
   const isNavbar = type === "navbar";
@@ -35,7 +37,12 @@ export const TitleLogo = ({
       <img
         src="/logo-white.png"
         alt="Massage studio logo"
-        className={twMerge("h-auto", isNavbar ? "w-16" : "w-48")}
+        className={twMerge(
+          "h-auto",
+          isNavbar ? "w-16" : "w-48",
+          onClick ? "cursor-pointer" : "",
+        )}
+        onClick={onClick}
       />
       <h3 className={isNavbar ? "text-2xl" : "text-7xl"}>
         Massage Studio NOORD

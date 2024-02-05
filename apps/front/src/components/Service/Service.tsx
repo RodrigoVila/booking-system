@@ -9,7 +9,6 @@ type ServiceProps = {
   description: string;
   durations: number[];
   imgSrc: string;
-  isEven: boolean;
 };
 
 export const Service = ({
@@ -17,7 +16,6 @@ export const Service = ({
   description,
   durations,
   imgSrc,
-  isEven,
 }: ServiceProps) => {
   const { ref, isVisible } = useOnScreenAnimation();
   const controls = useAnimation();
@@ -66,8 +64,10 @@ export const Service = ({
             </div>
             <p className="text-center tracking-wider">{description}</p>
             {/* Button integrated within the animation */}
-            <Button variant="outline" className="px-16 py-2 ">
-              Book
+            <Button variant="outline" className="px-0">
+              <a href="#booking" className="h-full w-full px-10 py-2">
+                Book
+              </a>
             </Button>
           </div>
         </motion.div>

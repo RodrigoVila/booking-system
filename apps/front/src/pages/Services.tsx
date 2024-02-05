@@ -11,7 +11,7 @@ const services = [
   },
   {
     title: "Neck & Shoulders",
-    img: "service-2.jpg",
+    img: "service-4.jpg",
     description: DESC,
     durations: [30],
   },
@@ -23,7 +23,7 @@ const services = [
   },
   {
     title: "Postnatal Care",
-    img: "service-4.jpg",
+    img: "service-2.jpg",
     description: DESC,
     durations: [60],
   },

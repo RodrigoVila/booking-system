@@ -19,6 +19,7 @@ export const Navbar = ({ isScrollOverHalfScreen }: NavbarProps) => {
         <TitleLogo
           type="navbar"
           isScrollOverHalfScreen={isScrollOverHalfScreen}
+          onClick={() => window.scrollTo(0, 0)}
         />
         <ul className="flex items-center justify-end gap-3 font-cremis font-bold tracking-widest">
           <NavItem href="#about">About</NavItem>

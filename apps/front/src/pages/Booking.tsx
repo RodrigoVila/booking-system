@@ -1,38 +1,60 @@
-import { Calendar } from "@components/Calendar";
-import React, { useState } from "react";
-import { ServiceType } from "shared-types";
+import { BookingCalendar } from "@components/BookingCalendar";
+import { Selector, TimeSelector } from "@components/Selectors";
+import {
+  DurationSelector,
+  OptionSelector,
+} from "@components/Selectors/OptionSelector";
+import { ServiceSelector } from "@components/Selectors/ServiceSelector";
+import { WorkerSelector } from "@components/Selectors/WorkerSelector";
+import { ChangeEvent, useState } from "react";
+import { ServiceType, WorkerType } from "shared-types";
 
 type BookingProps = {
   services: ServiceType[];
 };
 
+const workers: WorkerType[] = [
+  { name: "Damian", email: "damian@msn.com" },
+  { name: "Alena", email: "alena@msn.com" },
+];
+
+const durations = [30, 60];
+
 export const Booking = ({ services }: BookingProps) => {
-  const [selectedServiceTitle, setSelectedServiceTitle] = useState(
-    services[0].title,
+  const [selectedService, setSelectedService] = useState<ServiceType>(
+    services[0],
   );
-  const selectedService = services.find(
-    (service) => service.title === selectedServiceTitle,
-  );
+  const [selectedWorker, setSelectedWorker] = useState<WorkerType>(workers[0]);
+  const [selectedDate, setSelectedDate] = useState();
+  const [duration, setDuration] = useState<number>();
+  const [timeslot, setTimeslot] = useState<string[]>();
+
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleServiceChange = (event) => {
-    const serviceTitle = event.target.value;
-    setSelectedServiceTitle(serviceTitle);
-    setSelectedOptionIndex(0); // Reset to the first option
+  const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOptionIndex(Number(event.currentTarget.value));
   };
 
-  const handleOptionChange = (event) => {
-    setSelectedOptionIndex(Number(event.target.value));
+  const handleServiceChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedService(event.currentTarget.value);
+  };
+
+  const handleWorkerChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedWorker(event.currentTarget.value);
+  };
+
+  const handleDateChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedDate(event.currentTarget.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Validation and API call logic here
     console.log("Booking Information:", {
-      service: selectedServiceTitle,
+      service: selectedService?.title,
       option: selectedService?.options[selectedOptionIndex],
       name,
       email,
@@ -43,50 +65,31 @@ export const Booking = ({ services }: BookingProps) => {
   return (
     <section
       id="booking"
-      className="flex flex-col items-center rounded-lg bg-[#A5A58D] p-8 text-black"
+      className="flex min-h-screen w-full flex-col items-center justify-center gap-8 bg-[rgba(97,53,34,0.9)] py-20"
     >
-      <h3 className="mb-4 text-4xl">Book a Service</h3>
+      <h2 className="text-6xl">Book a service</h2>
       <form onSubmit={handleSubmit} className="w-full max-w-lg">
-        <div className="mb-4">
-          <label htmlFor="service" className="text-md mb-2 block font-medium">
-            Service
-          </label>
-          <select
-            id="service"
-            value={selectedServiceTitle}
-            onChange={handleServiceChange}
-            className="form-select w-full rounded-md"
-          >
-            {services.map((service) => (
-              <option key={service.title} value={service.title}>
-                {service.title}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="mb-4">
-          <label htmlFor="option" className="text-md mb-2 block font-medium">
-            Options
-          </label>
-          <select
-            id="option"
-            value={selectedOptionIndex}
-            onChange={handleOptionChange}
-            className="form-select w-full rounded-md"
-          >
-            {selectedService?.options.map((option, index) => (
-              <option
-                key={index}
-                value={index}
-              >{`${option.duration} mins - $${option.price}`}</option>
-            ))}
-          </select>
-        </div>
-        {/* Name, Email, Message Fields and Submit Button remain unchanged */}
+        <Selector
+          label="Service"
+          options={services}
+          value={selectedService.title}
+          onChange={handleServiceChange}
+        />
+        <Selector
+          label="Masseur"
+          options={workers}
+          value={selectedWorker.name}
+          onChange={handleServiceChange}
+        />
+        <Selector
+          label="Duration"
+          options={durations}
+          value={selectedWorker.name}
+          onChange={handleWorkerChange}
+        />
+        <Selector value={durations[0]} handleChange={handleOptionChange} />
+        <TimeSelector handleChange={() => {}} />
       </form>
-      <Calendar
-        availabilityData={[{ availability: "available", date: new Date() }]}
-      />
     </section>
   );
 };

@@ -63,7 +63,7 @@ const App = () => {
 
   return (
     <QueryClientProvider client={client}>
-      <main className="h-full min-h-screen w-full text-white">
+      <main className="h-full min-h-screen w-full ">
         <Navbar isScrollOverHalfScreen={isScrollOverHalfScreen} />
         <Home isScrollOverHalfScreen={isScrollOverHalfScreen} />
         <About />

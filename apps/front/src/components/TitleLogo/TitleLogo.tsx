@@ -23,12 +23,12 @@ export const TitleLogo = ({
       ? "opacity-0"
       : "opacity-100";
 
-  const typeStyle = isNavbar ? "flex-row gap-4" : "flex-col";
+  const typeStyle = isNavbar ? "flex-row" : "flex-col";
 
   return (
     <div
       className={twMerge(
-        "flex items-center justify-center text-2xl transition-opacity duration-500",
+        "flex items-center justify-center gap-4 text-2xl transition-opacity duration-500",
         typeStyle,
         opacityStyle,
         className,

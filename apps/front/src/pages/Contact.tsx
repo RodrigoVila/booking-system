@@ -44,10 +44,10 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative flex h-screen w-full flex-col items-center justify-center bg-[url('/home2.jpg')] bg-cover bg-center px-4 text-center text-white"
+      className="relative flex h-screen w-full flex-col items-center justify-center bg-[url('/home2.jpg')] bg-cover bg-center px-4 text-center "
     >
       <div className="absolute inset-0 z-0 bg-[rgba(0,0,0,0.3)]" />
-      <div className="z-[1] flex w-full flex-col items-center gap-3">
+      <div className="z-[1] flex w-full max-w-7xl flex-col items-center gap-3">
         <h2 className="text-6xl">Contact</h2>
         <div className="flex w-1/2 flex-col">
           <Input
@@ -76,14 +76,15 @@ export const Contact = () => {
             // placeholder={formatMessage({ id: "WRITE_A_MESSAGE" })}
             rows={5}
             maxLength={250}
-            className={`${inputStyle} resize-none`}
+            className={`${inputStyle} resize-none xl:text-lg`}
             value={contactForm.message}
             onChange={handleChange}
           />
           <Button
             onClick={handleSubmit}
             variant="transparent"
-            className="mt-4"
+            className="mt-4 font-semibold tracking-widest disabled:pointer-events-none disabled:opacity-30"
+            disabled
             // loading={isContactFormLoading}
           >
             Send

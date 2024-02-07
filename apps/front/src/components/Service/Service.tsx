@@ -33,16 +33,17 @@ export const Service = ({
       animate={isVisible ? "visible" : "hidden"}
       onHoverStart={() => controls.start("visible")}
       onHoverEnd={() => controls.start("hidden")}
-      className="relative flex max-w-4xl flex-col items-center overflow-hidden rounded-2xl border-2"
+      className="relative flex max-w-4xl flex-col items-center overflow-hidden rounded-2xl border-2 border-transparent duration-1000 hover:border-white"
     >
       <div
         style={{ backgroundImage: `url(${imgSrc})` }}
-        className="flex min-h-72 w-full flex-col items-center justify-center bg-cover bg-center"
+        className="relative flex min-h-72 w-full flex-col items-center justify-center bg-cover bg-center"
       >
+        <div className="absolute inset-0 bg-[rgba(0,0,0,0.3)]" />
         <h3 className="z-[1] text-5xl">{title}</h3>
 
         <motion.div
-          className="w-full overflow-hidden"
+          className="z-[1] w-full overflow-hidden"
           variants={detailVariants}
           initial="hidden"
           animate={controls}
@@ -57,7 +58,7 @@ export const Service = ({
             </div>
             <p className="text-center tracking-wider">{description}</p>
             {/* Button integrated within the animation */}
-            <Button variant="outline" className="px-0">
+            <Button variant="outline" className="rounded-full px-10">
               <a href="#booking" className="h-full w-full px-10 py-2">
                 Book
               </a>

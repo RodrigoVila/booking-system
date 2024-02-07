@@ -23,7 +23,7 @@ export const Input = ({ label, onChange, className, ...rest }: InputProps) => {
       <div className="flex">
         <input
           className={twMerge(
-            "focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight shadow focus:outline-none",
+            "focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight shadow focus:outline-none xl:py-3 xl:text-lg",
             className,
             disabledStyles,
           )}

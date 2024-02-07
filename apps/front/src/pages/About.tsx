@@ -2,7 +2,7 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="flex h-screen items-center justify-center bg-[#613522] px-4 text-center text-white"
+      className="bg-earth-4 flex h-screen items-center justify-center px-4 text-center "
     >
       <div className="flex w-full max-w-3xl flex-col items-center justify-center">
         <h2 className="text-6xl">About</h2>

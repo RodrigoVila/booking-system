@@ -17,4 +17,4 @@ router
   .put(updateBooking)
   .delete(deleteBooking);
 
-export default router;
+export { router };

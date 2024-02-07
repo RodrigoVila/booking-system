@@ -1,5 +1,5 @@
 import { Document, Schema, model } from "mongoose";
-import { BookingType } from "types";
+import { BookingType } from "shared-types";
 
 export type BookingSchemaType = BookingType & Document;
 

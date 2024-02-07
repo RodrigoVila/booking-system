@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
+
+import { BookingSchema, BookingType } from "shared-types";
+
 import { Booking } from "../models/booking";
-import { BookingSchema, BookingType } from "types";
 
 type NullableBookingType = BookingType | null;
 

@@ -2,7 +2,9 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import bookingRoutes from "./routes/bookingRoutes";
+import { router as bookingRoutes } from "./routes/bookingRoutes";
+import { router as userRoutes } from "./routes/userRoutes";
+import { router as workerRoutes } from "./routes/workerRoutes";
 
 dotenv.config();
 
@@ -24,6 +26,8 @@ app.use(express.json());
 
 // Routes
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/workers", workerRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);

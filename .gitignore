@@ -2,6 +2,7 @@
 /node_modules
 /apps/back/node_modules
 /apps/front/node_modules
+/apps/admin/node_modules
 /packages/types/node_modules
 
 # Dist
@@ -12,3 +13,4 @@
 # .env
 apps/back/.env
 apps/front/.env
+apps/admin/.env

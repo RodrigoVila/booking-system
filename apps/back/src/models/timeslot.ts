@@ -9,9 +9,13 @@ const timeslotSchema = new Schema({
     required: true,
     ref: "Worker",
   },
+  serviceType: {
+    type: Schema.Types.ObjectId,
+    ref: "Service",
+  },
   date: { type: Date, required: true },
-  startTime: { type: String, required: true }, // Format "HH:MM"
-  endTime: { type: String, required: true }, // Format "HH:MM"
+  startTime: { type: String, required: true },
+  endTime: { type: String, required: true },
   isBooked: { type: Boolean, required: true, default: false },
 });
 

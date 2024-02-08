@@ -9,7 +9,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      sparse: true, // This allows for null values to be unique as well
+      sparse: true,
     },
     password: String,
     name: {
@@ -26,6 +26,12 @@ const userSchema = new Schema(
         ref: "Booking",
       },
     ],
+    role: {
+      type: String,
+      required: true,
+      enum: ["client", "worker", "admin"],
+      default: "client",
+    },
   },
   { timestamps: true }
 );

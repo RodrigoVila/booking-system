@@ -5,21 +5,15 @@ export type WorkerSchemaType = WorkerType & Document;
 
 // Define the schema
 const workerSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  phoneNumber: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  servicesOffered: [String],
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  phoneNumber: { type: String, required: true, unique: true },
+  servicesOffered: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Service",
+    },
+  ],
   weeklyAvailability: {
     monday: [{ start: String, end: String }],
     tuesday: [{ start: String, end: String }],

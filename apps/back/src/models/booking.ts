@@ -9,12 +9,22 @@ const bookingSchema = new Schema(
       type: String,
       required: true,
     },
-    serviceType: {
-      type: String,
+    service: {
+      type: Schema.Types.ObjectId,
+      ref: "Service",
       required: true,
     },
-    bookingDate: {
-      type: String,
+    worker: {
+      type: Schema.Types.ObjectId,
+      ref: "Worker",
+      required: true,
+    },
+    bookingStart: {
+      type: Date,
+      required: true,
+    },
+    duration: {
+      type: Number, // Consider specifying in minutes
       required: true,
     },
     paidAmount: Number,

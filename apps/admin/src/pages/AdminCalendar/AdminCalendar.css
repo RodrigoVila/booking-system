@@ -1,0 +1,42 @@
+#calendar {
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  color: black;
+}
+
+#calendar button {
+  background-color: #ddbea9;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#calendar button:hover {
+  background-color: #613522;
+  color: white;
+  transition: all;
+  transition-duration: 0.1s;
+}
+
+#calendar button:active {
+  background-color: black;
+  color: white;
+}
+
+.react-calendar__month-view__weekdays {
+  background-color: #ddbea9;
+}
+
+.react-calendar__navigation {
+  margin: 0;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.react-calendar__navigation__label__labelText {
+  font-size: 1.1rem;
+  font-weight: 700;
+}

@@ -9,7 +9,7 @@ export const Services = ({ services }: ServicesProps) => {
   return (
     <section
       id="services"
-      className="flex min-h-screen w-full flex-col items-center justify-center gap-20 bg-earth-2 py-20"
+      className="flex w-full flex-col items-center justify-center bg-earth-2"
     >
       <h2 className="text-6xl text-black">Services</h2>
       {services.map(({ title, description, imgSrc, options }) => (

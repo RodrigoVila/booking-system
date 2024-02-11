@@ -7,7 +7,7 @@ import { Dashboard } from "@pages/Dashboard";
 import { Users } from "@pages/Users";
 import { Services } from "@pages/Services";
 import { Workers } from "@pages/Workers";
-import { Timeslots } from "@pages/Timeslots";
+import { AdminCalendar } from "@pages/AdminCalendar/AdminCalendar";
 import { Sidebar } from "@components/Sidebar";
 import { Navbar } from "@components/Navbar/Navbar";
 
@@ -16,12 +16,12 @@ export type PageType =
   | "Users"
   | "Services"
   | "Workers"
-  | "Timeslots";
+  | "Calendar";
 
 const client = new QueryClient();
 
 const App = () => {
-  const [activePage, setActivePage] = useState<PageType>("Dashboard");
+  const [activePage, setActivePage] = useState<PageType>("Calendar");
 
   return (
     <div className="h-full min-h-screen">
@@ -34,7 +34,7 @@ const App = () => {
         {activePage === "Users" && <Users />}
         {activePage === "Services" && <Services services={[]} />}
         {activePage === "Workers" && <Workers />}
-        {activePage === "Timeslots" && <Timeslots />}
+        {activePage === "Calendar" && <AdminCalendar />}
       </main>
     </div>
   );

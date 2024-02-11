@@ -29,10 +29,10 @@ export const WorkerSchema = z.object({
 
 export const UserSchema = z.object({
   email: z.string(),
-  password: z.string().min(1),
+  password: z.string().min(1).optional(),
   name: z.string().min(1),
   lastName: z.string().min(1),
-  bookings: z.array(z.string()),
+  bookings: z.array(z.string()).optional(),
 });
 
 export const TimeslotSchema = z.object({
@@ -48,3 +48,7 @@ export type ServiceType = z.infer<typeof ServiceSchema>;
 export type WorkerType = z.infer<typeof WorkerSchema>;
 export type UserType = z.infer<typeof UserSchema>;
 export type TimeslotType = z.infer<typeof TimeslotSchema>;
+
+type ValuePiece = Date | null;
+
+export type CalendarValue = ValuePiece | [ValuePiece, ValuePiece];

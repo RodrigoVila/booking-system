@@ -4,10 +4,10 @@ import { Timeslot } from "../models/timeslot"; // Adjust the import path as nece
 // List timeslots for a given range
 const getTimeslots = async (req: Request, res: Response) => {
   try {
-    const { startDate, endDate, workerId } = req.query; // Example filters
+    const { startDate, endDate, employeeId } = req.query; // Example filters
     const query = {
       date: { $gte: startDate, $lte: endDate },
-      ...(workerId && { workerId: workerId }),
+      ...(employeeId && { employeeId: employeeId }),
     };
     const timeslots = await Timeslot.find(query);
     res.status(200).json({ success: true, data: timeslots });

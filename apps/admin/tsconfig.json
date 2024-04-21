@@ -24,13 +24,16 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["./components/*"],
+      "@constants": ["./constants/index.ts"],
       "@hooks": ["./hooks/index.ts"],
       "@context": ["./context/index.ts"],
       "@pages/*": ["./pages/*"],
+      "@services/*": ["./services/*"],
       "@types": ["./types.d.ts"],
-    },
+      "@utils": ["./utils/index.ts"]
+    }
   },
 
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

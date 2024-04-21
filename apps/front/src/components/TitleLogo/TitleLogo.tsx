@@ -44,7 +44,7 @@ export const TitleLogo = ({
         )}
         onClick={onClick}
       />
-      <h3 className={isNavbar ? "text-2xl" : "text-7xl"}>
+      <h3 className={isNavbar ? "text-2xl" : "text-center text-7xl"}>
         Massage Studio NOORD
       </h3>
     </div>

@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ui-components": "workspace:*",
+    "shared-types": "workspace:*",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-calendar": "^4.8.0",
     "react-dom": "^18.2.0",
@@ -35,7 +38,6 @@
     "postcss": "^8.4.33",
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "shared-types": "workspace:*",
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",

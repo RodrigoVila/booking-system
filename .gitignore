@@ -4,6 +4,7 @@
 /apps/front/node_modules
 /apps/admin/node_modules
 /packages/types/node_modules
+/packages/ui-components/node_modules
 
 # Dist
 /apps/back/dist

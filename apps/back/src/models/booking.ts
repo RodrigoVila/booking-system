@@ -14,9 +14,9 @@ const bookingSchema = new Schema(
       ref: "Service",
       required: true,
     },
-    worker: {
+    employee: {
       type: Schema.Types.ObjectId,
-      ref: "Worker",
+      ref: "Employee",
       required: true,
     },
     bookingStart: {

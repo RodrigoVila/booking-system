@@ -1,9 +1,9 @@
-import { ChangeEvent, FC, InputHTMLAttributes } from "react";
-import { twMerge } from "tailwind-merge";
+import { ChangeEvent, InputHTMLAttributes } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 type InputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  "onChange" | "className"
+  'onChange' | 'className'
 > & {
   label?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -11,7 +11,7 @@ type InputProps = Omit<
 };
 
 export const Input = ({ label, onChange, className, ...rest }: InputProps) => {
-  const disabledStyles = rest.disabled ? "bg-slate-300 text-slate-600" : "";
+  const disabledStyles = rest.disabled ? 'bg-slate-300 text-slate-600' : '';
   return (
     <div className="mb-4 w-full">
       {label ? (
@@ -23,7 +23,7 @@ export const Input = ({ label, onChange, className, ...rest }: InputProps) => {
       <div className="flex">
         <input
           className={twMerge(
-            "focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight shadow focus:outline-none xl:py-3 xl:text-lg",
+            'focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-black shadow focus:outline-none xl:py-3 xl:text-lg',
             className,
             disabledStyles,
           )}

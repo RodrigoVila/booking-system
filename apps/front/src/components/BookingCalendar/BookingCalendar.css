@@ -7,7 +7,6 @@
 
 #calendar button {
   background-color: #ddbea9;
-  font-family: cremis;
   font-size: 13px;
   font-weight: 600;
 }
@@ -33,13 +32,11 @@
 }
 
 .react-calendar__month-view__weekdays__weekday {
-  font-family: cremis;
-  font-weight: 900;
+  font-weight: 600;
   font-size: 14px;
 }
 
 .react-calendar__navigation__label__labelText {
-  font-family: cremis;
   font-size: 1.4rem;
-  font-weight: 900;
+  font-weight: 600;
 }

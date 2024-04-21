@@ -5,7 +5,7 @@ type Option = { name?: string; title?: string };
 
 type SelectorProps = SelectHTMLAttributes<HTMLSelectElement> & {
   label?: string;
-  options: Option[] | string[];
+  options: Option[] | string[] | number[];
 };
 
 export const Selector = ({
@@ -23,7 +23,7 @@ export const Selector = ({
       {label && (
         <label
           htmlFor={id || label?.toLowerCase()}
-          className="text-md mb-2 block font-medium"
+          className="text-md mb-2 block tracking-wider"
         >
           {label}
         </label>
@@ -33,7 +33,7 @@ export const Selector = ({
         value={value}
         onChange={onChange}
         className={twMerge(
-          "text-md w-full rounded-md bg-earth-2 py-2 pl-1 font-cremis font-bold tracking-[0.15em] text-black",
+          "text-md w-full rounded-md bg-earth-2 py-2 pl-1 font-mono text-black",
           className,
         )}
         {...rest}
@@ -42,7 +42,7 @@ export const Selector = ({
           const value =
             typeof option === "string" ? option : option.title || option.name;
           return (
-            <option key={value} value={value}>
+            <option key={value} value={value} className="font-mono">
               {value}
             </option>
           );

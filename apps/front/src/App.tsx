@@ -10,6 +10,7 @@ import { Services } from "./pages/Services";
 import { About } from "./pages/About";
 import { Booking } from "./pages/Booking";
 import { Contact } from "./pages/Contact";
+import { AppProvider } from "@context";
 
 const client = new QueryClient();
 
@@ -25,12 +26,14 @@ const services: ServiceType[] = [
       { duration: 60, price: 100 },
       { duration: 90, price: 150 },
     ],
+    employees: ["1", "2"],
   },
   {
     title: "Neck & Shoulders",
     imgSrc: "service-4.jpg",
     description: DESC,
     options: [{ duration: 30, price: 70 }],
+    employees: ["1", "2"],
   },
   {
     title: "Pregnancy Care",
@@ -40,12 +43,14 @@ const services: ServiceType[] = [
       { duration: 60, price: 100 },
       { duration: 90, price: 150 },
     ],
+    employees: ["1", "2"],
   },
   {
     title: "Postnatal Care",
     imgSrc: "service-2.jpg",
     description: DESC,
     options: [{ duration: 60, price: 100 }],
+    employees: ["1", "2"],
   },
   {
     title: "Deep Tissue",
@@ -55,6 +60,7 @@ const services: ServiceType[] = [
       { duration: 60, price: 120 },
       { duration: 90, price: 180 },
     ],
+    employees: ["1", "2"],
   },
 ];
 
@@ -63,15 +69,17 @@ const App = () => {
 
   return (
     <QueryClientProvider client={client}>
-      <main className="h-full min-h-screen w-full ">
-        <Navbar isScrollOverHalfScreen={isScrollOverHalfScreen} />
-        <Home isScrollOverHalfScreen={isScrollOverHalfScreen} />
-        <About />
-        <Services services={services} />
-        <Booking services={services} />
-        <Contact />
-        <Footer />
-      </main>
+      <AppProvider>
+        <main className="h-full min-h-screen w-full">
+          <Navbar isScrollOverHalfScreen={isScrollOverHalfScreen} />
+          <Home isScrollOverHalfScreen={isScrollOverHalfScreen} />
+          <About />
+          <Services services={services} />
+          <Booking services={services} />
+          <Contact />
+          <Footer />
+        </main>
+      </AppProvider>
     </QueryClientProvider>
   );
 };

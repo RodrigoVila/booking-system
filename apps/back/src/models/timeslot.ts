@@ -4,10 +4,10 @@ import { TimeslotType } from "shared-types";
 export type BookingSchemaType = TimeslotType & Document;
 
 const timeslotSchema = new Schema({
-  workerId: {
+  employeeId: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: "Worker",
+    ref: "Employee",
   },
   serviceType: {
     type: Schema.Types.ObjectId,

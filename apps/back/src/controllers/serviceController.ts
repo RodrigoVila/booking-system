@@ -4,22 +4,22 @@ import { Service } from "../models/service"; // Adjust the import path as necess
 const getServices = async (_: Request, res: Response) => {
   try {
     const services = await Service.find();
-    res.status(200).json({ success: true, data: services });
+    res.status(200).json(services);
   } catch (err) {
-    res.status(500).json({ success: false, message: (err as Error).message });
+    res.status(500).json(err);
   }
 };
 
 const getServiceById = async (req: Request, res: Response) => {
   try {
     const service = await Service.findById(req.params.id);
-    if (!service) {
-      res.status(404).json({ success: false, message: "Service not found" });
+    if (service) {
+      res.status(200).json(service);
     } else {
-      res.status(200).json({ success: true, data: service });
+      res.status(404).json({ success: false });
     }
   } catch (err) {
-    res.status(500).json({ success: false, message: (err as Error).message });
+    res.status(500).json(err);
   }
 };
 
@@ -27,9 +27,9 @@ const createService = async (req: Request, res: Response) => {
   try {
     const newService = new Service(req.body);
     const savedService = await newService.save();
-    res.status(201).json({ success: true, data: savedService });
+    res.status(201).json(savedService);
   } catch (err) {
-    res.status(400).json({ success: false, message: (err as Error).message });
+    res.status(400).json(err);
   }
 };
 
@@ -40,28 +40,26 @@ const updateService = async (req: Request, res: Response) => {
       req.body,
       { new: true }
     );
-    if (!updatedService) {
-      res.status(404).json({ success: false, message: "Service not found" });
+    if (updatedService) {
+      res.status(200).json(updatedService);
     } else {
-      res.status(200).json({ success: true, data: updatedService });
+      res.status(404).json({ success: false, message: "Service not found" });
     }
   } catch (err) {
-    res.status(500).json({ success: false, message: (err as Error).message });
+    res.status(500).json(err);
   }
 };
 
 const deleteService = async (req: Request, res: Response) => {
   try {
     const deletedService = await Service.findByIdAndDelete(req.params.id);
-    if (!deletedService) {
-      res.status(404).json({ success: false, message: "Service not found" });
+    if (deletedService) {
+      res.status(200).json(deletedService);
     } else {
-      res
-        .status(200)
-        .json({ success: true, message: "Service deleted successfully" });
+      res.status(404).json({ success: false, message: "Service not found" });
     }
   } catch (err) {
-    res.status(500).json({ success: false, message: (err as Error).message });
+    res.status(500).json(err);
   }
 };
 

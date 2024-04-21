@@ -10,6 +10,7 @@ export const BookingSchema = z.object({
 });
 
 export const ServiceSchema = z.object({
+  _id: z.string().optional(),
   title: z.string(),
   imgSrc: z.string(),
   description: z.string(),
@@ -19,15 +20,31 @@ export const ServiceSchema = z.object({
       price: z.number(),
     })
   ),
+  employees: z.array(z.string()).optional(),
 });
 
-export const WorkerSchema = z.object({
+const AvailableDate = z.object({ start: z.string(), end: z.string() });
+
+export const EmployeeSchema = z.object({
+  _id: z.string().optional(),
   name: z.string(),
   email: z.string(),
-  specialties: z.array(z.string()).optional(),
+  phoneNumber: z.string(),
+  weeklyAvailability: z
+    .object({
+      monday: AvailableDate,
+      tuesday: AvailableDate,
+      wednesday: AvailableDate,
+      thursday: AvailableDate,
+      friday: AvailableDate,
+      saturday: AvailableDate,
+      sunday: AvailableDate,
+    })
+    .optional(),
 });
 
 export const UserSchema = z.object({
+  _id: z.string().optional(),
   email: z.string(),
   password: z.string().min(1).optional(),
   name: z.string().min(1),
@@ -36,7 +53,7 @@ export const UserSchema = z.object({
 });
 
 export const TimeslotSchema = z.object({
-  workerId: z.string(),
+  employeeId: z.string(),
   date: z.date(),
   startTime: z.string(),
   endTime: z.string(),
@@ -45,7 +62,7 @@ export const TimeslotSchema = z.object({
 
 export type BookingType = z.infer<typeof BookingSchema>;
 export type ServiceType = z.infer<typeof ServiceSchema>;
-export type WorkerType = z.infer<typeof WorkerSchema>;
+export type EmployeeType = z.infer<typeof EmployeeSchema>;
 export type UserType = z.infer<typeof UserSchema>;
 export type TimeslotType = z.infer<typeof TimeslotSchema>;
 

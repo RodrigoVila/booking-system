@@ -44,11 +44,11 @@ export const Sidebar = ({ activePage, setActivePage }: SidebarType) => {
         <li
           className={twMerge(
             itemStyles,
-            activePage === "Workers" && "border-b-white",
+            activePage === "Employees" && "border-b-white",
           )}
-          onClick={() => setActivePage("Workers")}
+          onClick={() => setActivePage("Employees")}
         >
-          Workers
+          Employees
         </li>
         <li
           className={twMerge(

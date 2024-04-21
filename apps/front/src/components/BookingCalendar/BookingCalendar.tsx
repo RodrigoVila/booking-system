@@ -21,7 +21,10 @@ export const BookingCalendar = ({ onDateChange }: BookingCalendarProps) => {
   };
 
   return (
-    <div id="calendar" className="rounded border p-4">
+    <div id="calendar" className="flex flex-col items-center justify-center">
+      <label className="text-md mb-2 block tracking-wider text-white">
+        Choose your date
+      </label>
       <Calendar onChange={onChange} value={value} minDate={new Date()} />
     </div>
   );

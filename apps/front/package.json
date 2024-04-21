@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ui-components": "workspace:*",
+    "shared-types": "workspace:*",
     "framer-motion": "^11.0.3",
     "lodash.throttle": "^4.1.1",
     "react": "^18.2.0",
@@ -37,7 +39,6 @@
     "postcss": "^8.4.33",
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "shared-types": "workspace:*",
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",

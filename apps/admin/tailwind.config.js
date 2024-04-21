@@ -5,20 +5,23 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        cremis: ["cremis", "sans-serif"],
-        cremisSig: ["cremisSig", "sans-serif"],
+        cremis: ['cremis', 'sans-serif'],
+        cremisSig: ['cremisSig', 'sans-serif'],
       },
       colors: {
-        black2: "#161616",
+        black2: '#161616',
         earth: {
-          1: "#F0EFEB",
-          2: "#EDDCD2",
-          3: "#DDBEA9",
-          4: "#CB997E",
-          5: "#BF8673",
-          6: "#8C523A",
-          7: "#613522"
-        }
+          1: '#F0EFEB',
+          2: '#EDDCD2',
+          3: '#DDBEA9',
+          4: '#CB997E',
+          5: '#BF8673',
+          6: '#8C523A',
+          7: '#613522'
+        },
+        overlay: 'rgba(0, 0, 0, 0.5)',
+        darkOverlay: 'rgba(0, 0, 0, 0.7)',
+        darkestOverlay: 'rgba(0, 0, 0, 0.9)',
       }
     },
   },

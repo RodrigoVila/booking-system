@@ -1,4 +1,5 @@
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import { MdOutlineEmail, MdOutlineLocalPhone } from 'react-icons/md';
 import { EmployeeType } from 'shared-types';
 
 import { Button } from '@components/Buttons/Button';
@@ -14,29 +15,31 @@ export const EmployeeCard = ({
   onEdit,
   onDelete,
 }: EmployeeCardProps) => {
+  const { name, email, phoneNumber, weeklyAvailability, imgUrl } = employee;
   return (
     <div className="m-4 flex justify-between rounded-lg bg-slate-900 p-4 text-white shadow-lg">
-      <div>
-        <h3 className="mb-2 text-2xl font-bold">{employee.name}</h3>
-        <p>
-          <strong>Email:</strong> {employee.email}
-        </p>
-        <p>
-          <strong>Phone number:</strong> {employee.phoneNumber}
-        </p>
+      <div className="flex flex-col gap-4">
+        <img src={imgUrl ?? '/no_img.jpg'} className="h-40 rounded-full" />
+        <h3 className="mb-2 text-4xl font-bold">{name}</h3>
+        <div className="flex items-center gap-2 text-xl">
+          <MdOutlineEmail />
+          <p>{email}</p>
+        </div>
+        <div className="flex items-center gap-2 text-xl">
+          <MdOutlineLocalPhone />
+          <p>{phoneNumber}</p>
+        </div>
       </div>
       <div className="mt-4">
         <h4 className="mb-2 text-lg font-semibold">Weekly Times</h4>
-        {employee.weeklyAvailability ? (
+        {weeklyAvailability ? (
           <ul className="inline">
-            {Object.entries(employee.weeklyAvailability).map(
-              ([day, { start, end }]) => (
-                <li key={day} className="">
-                  <strong>{day.charAt(0).toUpperCase() + day.slice(1)}:</strong>{' '}
-                  {start} - {end}
-                </li>
-              ),
-            )}
+            {Object.entries(weeklyAvailability).map(([day, { start, end }]) => (
+              <li key={day} className="">
+                <strong>{day.charAt(0).toUpperCase() + day.slice(1)}:</strong>{' '}
+                {start} - {end}
+              </li>
+            ))}
           </ul>
         ) : null}
       </div>

@@ -26,10 +26,11 @@ export const ServiceSchema = z.object({
 const AvailableDate = z.object({ start: z.string(), end: z.string() });
 
 export const EmployeeSchema = z.object({
-  _id: z.string().optional(),
   name: z.string(),
   email: z.string(),
   phoneNumber: z.string(),
+  _id: z.string().optional(),
+  imgUrl: z.string().optional(),
   weeklyAvailability: z
     .object({
       monday: AvailableDate,

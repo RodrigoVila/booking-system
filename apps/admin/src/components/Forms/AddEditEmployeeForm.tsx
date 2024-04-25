@@ -75,6 +75,15 @@ export const AddEditEmployeeForm = ({
         placeholder="Phone Number"
         disabled={isLoading}
       />
+      <h4>Available days</h4>
+      <div className="my-4 border-2 border-white p-4">
+        <div className="flex items-center justify-center gap-3">
+          Mon:
+          <Input type="time" onChange={() => {}} className="h-8" />
+          to
+          <Input type="time" onChange={() => {}} className="h-8" />
+        </div>
+      </div>
       {/* Additional inputs for `weeklyAvailability` could be handled similarly */}
       <Button
         type="submit"

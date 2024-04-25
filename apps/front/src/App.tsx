@@ -75,7 +75,7 @@ const App = () => {
           <Home isScrollOverHalfScreen={isScrollOverHalfScreen} />
           <About />
           <Services services={services} />
-          <Booking services={services} />
+          {/* <Booking services={services} /> */}
           <Contact />
           <Footer />
         </main>

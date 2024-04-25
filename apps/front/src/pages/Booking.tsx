@@ -1,9 +1,9 @@
 import { BookingCalendar } from "@components/BookingCalendar";
-import { Button } from "@components/Button";
+import { BookButton } from "@components/Button/BookButton";
+import { SectionTitle, SectionWrapper } from "@components/Section";
 import { Selector } from "@components/Selectors";
 import { AppContext } from "@context";
 import { ChangeEvent, useContext, useState } from "react";
-import Calendar from "react-calendar";
 import { ServiceType, EmployeeType } from "shared-types";
 
 type BookingProps = {
@@ -11,8 +11,6 @@ type BookingProps = {
 };
 
 type HandleChangeType = "service" | "employee" | "duration" | "date";
-
-type AdminServiceType = Partial<ServiceType>;
 
 const employees: EmployeeType[] = [
   { name: "Damian", email: "damian@msn.com" },
@@ -63,12 +61,12 @@ export const Booking = ({ services }: BookingProps) => {
   };
 
   return (
-    <section
-      id="booking"
-      className="flex min-h-screen w-full flex-col items-center justify-center gap-8 bg-[rgba(97,53,34,0.9)] py-20"
-    >
-      <h2 className="text-6xl">Book a service</h2>
-      <form onSubmit={handleSubmit} className="w-full max-w-lg">
+    <SectionWrapper className="bg-earth-8">
+      <SectionTitle>Book a service</SectionTitle>
+      <form
+        onSubmit={handleSubmit}
+        className="flex w-full max-w-lg flex-col items-center"
+      >
         <Selector
           label="Service"
           options={services}
@@ -87,9 +85,9 @@ export const Booking = ({ services }: BookingProps) => {
           value={duration}
           onChange={(e) => handleChange("duration", e)}
         />
-        <BookingCalendar onDateChange={(e) => handleChange("date", e)} />
-        <Button>Book</Button>
+        <BookingCalendar />
+        <BookButton className="mt-8 rounded-md" />
       </form>
-    </section>
+    </SectionWrapper>
   );
 };

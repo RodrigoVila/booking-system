@@ -1,9 +1,9 @@
-import { Button } from "@components/Button";
 import { useOnScreenAnimation } from "@hooks";
 import { motion, useAnimation } from "framer-motion";
 import { useAppContext } from "@hooks";
 
 import { ServiceType } from "shared-types";
+import { BookButton } from "@components/Button/BookButton";
 
 type ServiceProps = {
   service: ServiceType;
@@ -46,7 +46,7 @@ export const Service = ({ service }: ServiceProps) => {
         className="relative flex min-h-72 w-full flex-col items-center justify-center bg-cover bg-center"
       >
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.3)]" />
-        <h3 className="z-[1] text-5xl">{title}</h3>
+        <h3 className="z-[1] text-5xl tracking-widest">{title}</h3>
 
         <motion.div
           className="z-[1] w-full overflow-hidden"
@@ -64,15 +64,7 @@ export const Service = ({ service }: ServiceProps) => {
             </div>
             <p className="text-center tracking-wider">{description}</p>
             {/* Button integrated within the animation */}
-            <Button
-              variant="outline"
-              className="rounded-full px-10"
-              onClick={handleButtonClick}
-            >
-              <a href="#booking" className="h-full w-full px-10 py-2">
-                Book
-              </a>
-            </Button>
+            <BookButton />
           </div>
         </motion.div>
       </div>

@@ -8,11 +8,7 @@ type ValuePiece = Date | null;
 
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-type BookingCalendarProps = {
-  onDateChange: Value;
-};
-
-export const BookingCalendar = ({ onDateChange }: BookingCalendarProps) => {
+export const BookingCalendar = () => {
   const [value, setValue] = useState<Value>(new Date());
 
   const onChange = (nextValue: Value) => {

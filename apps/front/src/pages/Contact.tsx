@@ -1,7 +1,8 @@
-import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
+import { ChangeEvent, SyntheticEvent, useState } from "react";
 
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
+import { SectionTitle, SectionWrapper } from "@components/Section";
 
 const INITIAL_STATE = {
   name: "",
@@ -17,7 +18,7 @@ export const Contact = () => {
     (value) => value !== "",
   );
   // TODO: WHY LOADING BUTTON KEEPS LOADING FOREVER EVEN AFTER SUCCESS
-  const clearForm = () => setContactForm(INITIAL_STATE);
+  // const clearForm = () => setContactForm(INITIAL_STATE);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -42,13 +43,13 @@ export const Contact = () => {
   const inputStyle =
     "mb-2 w-full rounded-md text-sm border-2 border-transparent bg-[rgba(255,255,255,0.2)] py-2 pl-2 placeholder:text-slate-300 placeholder:tracking-wider focus:border-white focus:outline-none";
   return (
-    <section
+    <SectionWrapper
       id="contact"
-      className="relative flex h-screen w-full flex-col items-center justify-center bg-[url('/home2.jpg')] bg-cover bg-center px-4 text-center "
+      className="relative flex bg-[url('/home2.jpg')] bg-cover bg-center"
     >
+      <SectionTitle className="z-[1]">Contact</SectionTitle>
       <div className="absolute inset-0 z-0 bg-[rgba(0,0,0,0.3)]" />
       <div className="z-[1] flex w-full max-w-7xl flex-col items-center gap-3">
-        <h2 className="text-6xl">Contact</h2>
         <div className="flex w-1/2 flex-col">
           <Input
             name="name"
@@ -91,6 +92,6 @@ export const Contact = () => {
           </Button>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 };

@@ -27,8 +27,8 @@ const AvailableDate = z.object({ start: z.string(), end: z.string() });
 
 export const EmployeeSchema = z.object({
   name: z.string(),
-  email: z.string(),
-  phoneNumber: z.string(),
+  email: z.string().optional(),
+  phoneNumber: z.string().optional(),
   _id: z.string().optional(),
   imgUrl: z.string().optional(),
   weeklyAvailability: z

@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
 type ButtonVariantType = "rounded" | "square" | "outline" | "transparent";
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariantType;
 };
 

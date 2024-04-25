@@ -19,7 +19,7 @@ export const Selector = ({
   ...rest
 }: SelectorProps) => {
   return (
-    <div className="mb-4">
+    <div className="mb-4 w-full">
       {label && (
         <label
           htmlFor={id || label?.toLowerCase()}

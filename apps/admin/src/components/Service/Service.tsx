@@ -1,4 +1,4 @@
-import { ServiceType } from "shared-types";
+import { ServiceType } from 'shared-types';
 
 export const Service = ({
   title,
@@ -11,7 +11,7 @@ export const Service = ({
       <h2>{title}</h2>
       <p>{description}</p>
       {options.map((option) => (
-        <div>
+        <div key={`${option.duration}-${option.price}`}>
           <div>{option.duration}</div>
           <div>{option.price}</div>
         </div>

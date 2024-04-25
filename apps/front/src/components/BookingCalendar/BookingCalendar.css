@@ -25,6 +25,8 @@
 
 .react-calendar__month-view__weekdays {
   background-color: #ddbea9;
+  letter-spacing: 1px;
+  font-family: monospace;
 }
 
 .react-calendar__navigation {

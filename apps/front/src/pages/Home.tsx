@@ -1,4 +1,6 @@
+import { OpacityWrapper } from "@components/OpacityWrapper";
 import { TitleLogo } from "../components/TitleLogo";
+import { SectionWrapper } from "@components/Section";
 
 type HomeProps = {
   isScrollOverHalfScreen: boolean;
@@ -6,11 +8,24 @@ type HomeProps = {
 
 export const Home = ({ isScrollOverHalfScreen }: HomeProps) => {
   return (
-    <section
+    <SectionWrapper
       id="home"
-      className="relative flex h-screen w-full items-center justify-center bg-[url('/home.jpg')] bg-cover bg-center"
+      className="relative flex h-screen w-full items-center justify-center p-0"
     >
-      <TitleLogo type="home" isScrollOverHalfScreen={isScrollOverHalfScreen} />
-    </section>
+      <video
+        className={`absolute inset-0 h-full w-full object-cover`}
+        autoPlay
+        muted
+        loop
+        src="/vid1.mov"
+      />
+
+      <OpacityWrapper className="relative">
+        <TitleLogo
+          type="home"
+          isScrollOverHalfScreen={isScrollOverHalfScreen}
+        />
+      </OpacityWrapper>
+    </SectionWrapper>
   );
 };

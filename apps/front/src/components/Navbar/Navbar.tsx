@@ -7,7 +7,7 @@ type NavbarProps = {
 };
 
 export const Navbar = ({ isScrollOverHalfScreen }: NavbarProps) => {
-  const navStyles = isScrollOverHalfScreen ? "bg-black2" : "";
+  const navStyles = isScrollOverHalfScreen ? "bg-black" : "";
   return (
     <header
       className={twMerge(

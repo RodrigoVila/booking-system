@@ -3,6 +3,7 @@ import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 import { SectionTitle, SectionWrapper } from "@components/Section";
+import { OpacityWrapper } from "@components/OpacityWrapper";
 
 const INITIAL_STATE = {
   name: "",
@@ -45,53 +46,54 @@ export const Contact = () => {
   return (
     <SectionWrapper
       id="contact"
-      className="relative flex bg-[url('/home2.jpg')] bg-cover bg-center"
+      className="bg-[url('/hands.jpg')] bg-cover bg-center p-0"
     >
-      <SectionTitle className="z-[1]">Contact</SectionTitle>
-      <div className="absolute inset-0 z-0 bg-[rgba(0,0,0,0.3)]" />
-      <div className="z-[1] flex w-full max-w-7xl flex-col items-center gap-3">
-        <div className="flex w-1/2 flex-col">
-          <Input
-            name="name"
-            // placeholder={formatMessage({ id: "NAME" })}
-            className={inputStyle}
-            value={contactForm.name}
-            onChange={handleChange}
-          />
-          <Input
-            name="email"
-            // placeholder={formatMessage({ id: "EMAIL" })}
-            className={inputStyle}
-            value={contactForm.email}
-            onChange={handleChange}
-          />
-          <Input
-            name="subject"
-            // placeholder={formatMessage({ id: "SUBJECT" })}
-            className={inputStyle}
-            value={contactForm.subject}
-            onChange={handleChange}
-          />
-          <textarea
-            name="message"
-            // placeholder={formatMessage({ id: "WRITE_A_MESSAGE" })}
-            rows={5}
-            maxLength={250}
-            className={`${inputStyle} resize-none xl:text-lg`}
-            value={contactForm.message}
-            onChange={handleChange}
-          />
-          <Button
-            onClick={handleSubmit}
-            variant="transparent"
-            className="mt-4 font-semibold tracking-widest disabled:pointer-events-none disabled:opacity-30"
-            disabled
-            // loading={isContactFormLoading}
-          >
-            Send
-          </Button>
+      <OpacityWrapper className="h-screen flex-col gap-8">
+        <SectionTitle>Contact</SectionTitle>
+        <div className="z-[1] flex w-full max-w-7xl flex-col items-center gap-3">
+          <div className="flex w-1/2 flex-col">
+            <Input
+              name="name"
+              // placeholder={formatMessage({ id: "NAME" })}
+              className={inputStyle}
+              value={contactForm.name}
+              onChange={handleChange}
+            />
+            <Input
+              name="email"
+              // placeholder={formatMessage({ id: "EMAIL" })}
+              className={inputStyle}
+              value={contactForm.email}
+              onChange={handleChange}
+            />
+            <Input
+              name="subject"
+              // placeholder={formatMessage({ id: "SUBJECT" })}
+              className={inputStyle}
+              value={contactForm.subject}
+              onChange={handleChange}
+            />
+            <textarea
+              name="message"
+              // placeholder={formatMessage({ id: "WRITE_A_MESSAGE" })}
+              rows={5}
+              maxLength={250}
+              className={`${inputStyle} resize-none xl:text-lg`}
+              value={contactForm.message}
+              onChange={handleChange}
+            />
+            <Button
+              onClick={handleSubmit}
+              variant="transparent"
+              className="mt-4 font-semibold tracking-widest disabled:pointer-events-none disabled:opacity-30"
+              disabled
+              // loading={isContactFormLoading}
+            >
+              Send
+            </Button>
+          </div>
         </div>
-      </div>
+      </OpacityWrapper>
     </SectionWrapper>
   );
 };

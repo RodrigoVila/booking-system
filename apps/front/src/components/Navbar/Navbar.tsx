@@ -24,7 +24,7 @@ export const Navbar = ({ isScrollOverHalfScreen }: NavbarProps) => {
         <ul className="flex items-center justify-end gap-3 font-cremis font-bold tracking-widest">
           <NavItem href="#about">About</NavItem>
           <NavItem href="#services">Services</NavItem>
-          <NavItem href="#booking">Booking</NavItem>
+          {/* <NavItem href="#booking">Booking</NavItem> */}
           <NavItem href="#contact">Contact</NavItem>
         </ul>
       </nav>

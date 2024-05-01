@@ -17,7 +17,7 @@ export const Home = ({ isScrollOverHalfScreen }: HomeProps) => {
         autoPlay
         muted
         loop
-        src="/vid1.mov"
+        src="/homeVid.mov"
       />
 
       <OpacityWrapper className="relative">

@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, InputHTMLAttributes } from "react";
+import { ChangeEvent, InputHTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
 type InputProps = Omit<

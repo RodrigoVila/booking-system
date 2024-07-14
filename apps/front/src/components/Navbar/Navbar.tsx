@@ -21,7 +21,12 @@ export const Navbar = ({ isScrollOverHalfScreen }: NavbarProps) => {
           isScrollOverHalfScreen={isScrollOverHalfScreen}
           onClick={() => window.scrollTo(0, 0)}
         />
-        <ul className="flex items-center justify-end gap-3 font-cremis font-bold tracking-widest">
+        <ul
+          className={twMerge(
+            "flex items-center justify-end gap-3 font-cremis font-bold tracking-widest",
+            isScrollOverHalfScreen ? "flex" : "hidden",
+          )}
+        >
           <NavItem href="#about">About</NavItem>
           <NavItem href="#services">Services</NavItem>
           {/* <NavItem href="#booking">Booking</NavItem> */}

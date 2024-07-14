@@ -1,10 +1,10 @@
 import { ChangeEvent, SyntheticEvent, useState } from "react";
+import { Resend } from "resend";
 
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 import { SectionTitle, SectionWrapper } from "@components/Section";
-import { OpacityWrapper } from "@components/OpacityWrapper";
-import { FaWhatsapp } from "react-icons/fa";
+import ContactEmail from "@components/EmailTemplates/ContactEmail";
 
 const INITIAL_STATE = {
   name: "",
@@ -13,14 +13,18 @@ const INITIAL_STATE = {
   message: "",
 };
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export const Contact = () => {
   const [contactForm, setContactForm] = useState(INITIAL_STATE);
+
+  const resend = new Resend(import.meta.env.VITE_RESEND_API_KEY);
+
+  const { name, email, subject, message } = contactForm;
 
   const isContactFormCompleted = Object.values(contactForm).every(
     (value) => value !== "",
   );
-  // TODO: WHY LOADING BUTTON KEEPS LOADING FOREVER EVEN AFTER SUCCESS
-  // const clearForm = () => setContactForm(INITIAL_STATE);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -31,11 +35,40 @@ export const Contact = () => {
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
+
     if (!isContactFormCompleted) {
-      // displayInfoMessage(formatMessage({ id: "ALL_INPUTS_REQUIRED" }));
+      alert("All inputs required");
       return;
     }
-    // sendContactForm(contactForm);
+
+    if (!EMAIL_REGEX.test(contactForm.email)) {
+      alert("Please enter valid email");
+      return;
+    }
+
+    if (contactForm.message.length < 10) {
+      alert("Message should be longer than 10 characers");
+      return;
+    }
+
+    try {
+      const response = await resend.emails.send({
+        from: email,
+        to: import.meta.env.VITE_STUDIO_EMAIL,
+        subject: "Nuevo contacto desde la web",
+        react: (
+          <ContactEmail
+            name={name}
+            email={email}
+            subject={subject}
+            message={message}
+          />
+        ),
+      });
+      console.log("Mail sent OK", response);
+    } catch (error) {
+      console.error("Error sending email: ", error);
+    }
   };
 
   // useEffect(() => {
@@ -61,6 +94,7 @@ export const Contact = () => {
           className={inputStyle}
           value={contactForm.email}
           onChange={handleChange}
+          pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/"
         />
         <Input
           name="subject"
@@ -82,7 +116,7 @@ export const Contact = () => {
           onClick={handleSubmit}
           variant="transparent"
           className="mt-4 font-semibold tracking-widest disabled:pointer-events-none disabled:opacity-30"
-          disabled
+          disabled={!isContactFormCompleted}
           // loading={isContactFormLoading}
         >
           Send

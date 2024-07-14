@@ -6,7 +6,7 @@ export const Footer = () => {
   const { isOver768px } = useScreenWidth();
 
   const imgStyle = "duration-200 transition-transform hover:scale-110";
-  const iconSize = isOver768px ? 40 : 32;
+  const iconSize = 40;
   const titleStyles = "text-lg md:text-2xl mb-2 text-center";
 
   return (

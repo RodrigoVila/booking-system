@@ -7,6 +7,7 @@ type ServicesProps = {
 };
 
 export const Services = ({ services }: ServicesProps) => {
+  console.log({ services });
   return (
     <SectionWrapper id="services" className="gap-20">
       <SectionTitle className="text-black ">Services</SectionTitle>

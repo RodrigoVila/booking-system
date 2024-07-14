@@ -7,5 +7,9 @@ type SectionTitleProps = PropsWithChildren & {
 };
 
 export const SectionTitle = ({ children, className }: SectionTitleProps) => {
-  return <h2 className={twMerge("text-7xl", className)}>{children}</h2>;
+  return (
+    <h2 className={twMerge("text-center text-5xl md:text-6xl", className)}>
+      {children}
+    </h2>
+  );
 };

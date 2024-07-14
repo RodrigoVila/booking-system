@@ -41,10 +41,7 @@ export const Home = ({ scrolledHalf }: HomeProps) => {
   }, [isOver768px]);
 
   return (
-    <SectionWrapper
-      id="home"
-      className="relative flex h-screen w-full items-center justify-center p-0"
-    >
+    <SectionWrapper id="home">
       <video
         ref={videoRef}
         className={"absolute inset-0 h-full w-full object-cover"}
@@ -53,10 +50,9 @@ export const Home = ({ scrolledHalf }: HomeProps) => {
         loop
         src={isOver768px ? "/homeVid.mov" : "/homeVid-mobile.mov"}
       />
-
-      <OpacityWrapper className="relative">
+      <div className="absolute inset-0 z-[1] flex items-center justify-center bg-black bg-opacity-30">
         <TitleLogo type="home" scrolledHalf={scrolledHalf} />
-      </OpacityWrapper>
+      </div>
     </SectionWrapper>
   );
 };

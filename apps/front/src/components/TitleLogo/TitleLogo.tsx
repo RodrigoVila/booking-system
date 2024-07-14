@@ -39,13 +39,17 @@ export const TitleLogo = ({
         alt="Massage studio logo"
         className={twMerge(
           "h-auto",
-          isNavbar ? "w-16" : "w-48",
+          isNavbar ? "w-16" : "w-24 md:w-36",
           onClick ? "cursor-pointer" : "",
         )}
         onClick={onClick}
       />
       <h3
-        className={isNavbar ? "hidden text-xl md:flex" : "text-center text-7xl"}
+        className={
+          isNavbar
+            ? "hidden text-xl md:flex"
+            : "px-4 text-center text-3xl md:text-6xl"
+        }
       >
         Massage Studio NOORD
       </h3>

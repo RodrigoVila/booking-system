@@ -4,20 +4,20 @@ import { useAppContext } from "@hooks";
 
 import { ServiceType } from "shared-types";
 import { BookButton } from "@components/Button/BookButton";
+import { useState } from "react";
 
 type ServiceProps = {
   service: ServiceType;
 };
 
 export const Service = ({ service }: ServiceProps) => {
+  //Mostly for mobile users as there is no "hover" that shows the description.
+  const [isActive, setIsActive] = useState(false);
+
   const { ref, isVisible } = useOnScreenAnimation();
   const controls = useAnimation();
 
-  const { setSelectedService } = useAppContext();
-
   const { title, description, imgSrc, options } = service;
-
-  const handleButtonClick = () => setSelectedService(service);
 
   const detailVariants = {
     hidden: {
@@ -32,6 +32,11 @@ export const Service = ({ service }: ServiceProps) => {
     },
   };
 
+  const handleTap = () => {
+    setIsActive((prev) => !prev);
+    controls.start(isActive ? "hidden" : "visible");
+  };
+
   return (
     <motion.article
       ref={ref}
@@ -39,14 +44,17 @@ export const Service = ({ service }: ServiceProps) => {
       animate={isVisible ? "visible" : "hidden"}
       onHoverStart={() => controls.start("visible")}
       onHoverEnd={() => controls.start("hidden")}
+      onTap={handleTap}
       className="relative flex max-w-4xl flex-col items-center overflow-hidden rounded-2xl border-2 border-transparent duration-1000 hover:border-white"
     >
       <div
         style={{ backgroundImage: `url(${imgSrc})` }}
-        className="relative flex min-h-72 w-full flex-col items-center justify-center bg-cover bg-center"
+        className="relative flex min-h-56 w-full flex-col items-center justify-center bg-cover bg-center px-2 text-center md:min-h-72"
       >
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.3)]" />
-        <h3 className="z-[1] text-5xl tracking-widest">{title}</h3>
+        <h3 className="z-[1] text-3xl leading-[3.5rem] tracking-widest md:text-5xl">
+          {title}
+        </h3>
 
         <motion.div
           className="z-[1] w-full overflow-hidden"

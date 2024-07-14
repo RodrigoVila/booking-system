@@ -9,11 +9,13 @@ type ServicesProps = {
 export const Services = ({ services }: ServicesProps) => {
   console.log({ services });
   return (
-    <SectionWrapper id="services" className="gap-20">
-      <SectionTitle className="text-black ">Services</SectionTitle>
-      {services.map((service) => (
-        <Service service={service} />
-      ))}
+    <SectionWrapper id="services" className="bg-earth-2" withOverlay={false}>
+      <SectionTitle className="text-black">Services</SectionTitle>
+      <div className="mt-24 flex flex-col gap-8 px-2 md:mt-40 md:gap-20 md:px-8">
+        {services.map((service) => (
+          <Service service={service} />
+        ))}
+      </div>
     </SectionWrapper>
   );
 };

@@ -3,11 +3,11 @@ import { TitleLogo } from "../TitleLogo";
 import { twMerge } from "tailwind-merge";
 
 type NavbarProps = {
-  isScrollOverHalfScreen: boolean;
+  scrolledHalf: boolean;
 };
 
-export const Navbar = ({ isScrollOverHalfScreen }: NavbarProps) => {
-  const navStyles = isScrollOverHalfScreen ? "bg-black" : "";
+export const Navbar = ({ scrolledHalf }: NavbarProps) => {
+  const navStyles = scrolledHalf ? "bg-black" : "";
   return (
     <header
       className={twMerge(
@@ -18,13 +18,13 @@ export const Navbar = ({ isScrollOverHalfScreen }: NavbarProps) => {
       <nav className="relative flex w-full items-center justify-between">
         <TitleLogo
           type="navbar"
-          isScrollOverHalfScreen={isScrollOverHalfScreen}
+          scrolledHalf={scrolledHalf}
           onClick={() => window.scrollTo(0, 0)}
         />
         <ul
           className={twMerge(
             "flex items-center justify-end gap-3 font-cremis font-bold tracking-widest",
-            isScrollOverHalfScreen ? "flex" : "hidden",
+            scrolledHalf ? "flex" : "hidden",
           )}
         >
           <NavItem href="#about">About</NavItem>

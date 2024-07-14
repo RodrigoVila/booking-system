@@ -2,20 +2,20 @@ import { twMerge } from "tailwind-merge";
 
 type TitleLogoType = {
   type: "navbar" | "home";
-  isScrollOverHalfScreen: boolean;
+  scrolledHalf: boolean;
   onClick?: () => void;
   className?: string;
 };
 
 export const TitleLogo = ({
   type,
-  isScrollOverHalfScreen,
+  scrolledHalf,
   onClick,
   className,
 }: TitleLogoType) => {
   const isNavbar = type === "navbar";
 
-  const opacityStyle = isScrollOverHalfScreen
+  const opacityStyle = scrolledHalf
     ? isNavbar
       ? "opacity-100"
       : "opacity-0"
@@ -28,7 +28,7 @@ export const TitleLogo = ({
   return (
     <div
       className={twMerge(
-        "flex items-center justify-center gap-4 text-2xl transition-opacity duration-500",
+        "flex items-center justify-center gap-4 transition-opacity duration-500",
         typeStyle,
         opacityStyle,
         className,
@@ -44,7 +44,9 @@ export const TitleLogo = ({
         )}
         onClick={onClick}
       />
-      <h3 className={isNavbar ? "hidden" : "text-center text-7xl"}>
+      <h3
+        className={isNavbar ? "hidden text-xl md:flex" : "text-center text-7xl"}
+      >
         Massage Studio NOORD
       </h3>
     </div>

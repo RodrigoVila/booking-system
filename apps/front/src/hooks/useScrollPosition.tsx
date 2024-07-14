@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import throttle from "lodash.throttle";
 
 export const useScrollPosition = (throttleMilliseconds: number = 100) => {
-  const [isScrollOverHalfScreen, setIsScrollOverHalfScreen] = useState(false);
+  const [scrolledHalf, setScrolledHalf] = useState(false);
 
   useEffect(() => {
     const handleScroll = throttle(() => {
       const screenHeightLimit = window.innerHeight / 2 - 60;
-      setIsScrollOverHalfScreen(window.scrollY > screenHeightLimit);
+      setScrolledHalf(window.scrollY > screenHeightLimit);
     }, throttleMilliseconds);
 
     window.addEventListener("scroll", handleScroll);
@@ -19,5 +19,5 @@ export const useScrollPosition = (throttleMilliseconds: number = 100) => {
     };
   }, [throttleMilliseconds]);
 
-  return { isScrollOverHalfScreen };
+  return { scrolledHalf };
 };

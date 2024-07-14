@@ -8,7 +8,6 @@ import { useScrollPosition } from "@hooks";
 import { Home } from "./pages/Home";
 import { Services } from "./pages/Services";
 import { About } from "./pages/About";
-import { Booking } from "./pages/Booking";
 import { Contact } from "./pages/Contact";
 import { AppProvider } from "@context";
 
@@ -65,14 +64,14 @@ const services: ServiceType[] = [
 ];
 
 const App = () => {
-  const { isScrollOverHalfScreen } = useScrollPosition();
+  const { scrolledHalf } = useScrollPosition();
 
   return (
     <QueryClientProvider client={client}>
       <AppProvider>
         <main className="h-full min-h-screen w-full">
-          <Navbar isScrollOverHalfScreen={isScrollOverHalfScreen} />
-          <Home isScrollOverHalfScreen={isScrollOverHalfScreen} />
+          <Navbar scrolledHalf={scrolledHalf} />
+          <Home scrolledHalf={scrolledHalf} />
           <About />
           <Services services={services} />
           {/* <Booking services={services} /> */}

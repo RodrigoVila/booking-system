@@ -1,10 +1,8 @@
 import { useScreenWidth } from "@hooks";
-import { OpacityWrapper } from "@components/OpacityWrapper";
 import { SectionWrapper } from "@components/Section";
 
 import { TitleLogo } from "../components/TitleLogo";
 import { useEffect, useRef } from "react";
-import { twMerge } from "tailwind-merge";
 
 type HomeProps = {
   scrolledHalf: boolean;

@@ -1,5 +1,5 @@
-import { SelectHTMLAttributes } from "react";
-import { twMerge } from "tailwind-merge";
+import { SelectHTMLAttributes } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 type Option = { name?: string; title?: string };
 
@@ -33,14 +33,14 @@ export const Selector = ({
         value={value}
         onChange={onChange}
         className={twMerge(
-          "text-md w-full rounded-md bg-earth-2 py-2 pl-1 font-cremis font-bold tracking-[0.15em] text-black",
+          'text-md w-full rounded-md bg-earth-2 py-2 pl-1 font-bold tracking-[0.15em] text-black',
           className,
         )}
         {...rest}
       >
         {options.map((option) => {
           const value =
-            typeof option === "string" ? option : option.title || option.name;
+            typeof option === 'string' ? option : option.title || option.name;
           return (
             <option key={value} value={value}>
               {value}

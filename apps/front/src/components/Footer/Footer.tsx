@@ -11,7 +11,7 @@ export const Footer = () => {
 
   return (
     <footer className="w-full bg-black px-6 py-4 lg:pb-12 lg:pt-8">
-      <div className="flex w-full flex-col flex-wrap items-center justify-center gap-8 font-cremis text-lg text-white lg:flex-row-reverse lg:justify-between">
+      <div className="flex w-full flex-col flex-wrap items-center justify-center gap-8 text-lg text-white lg:flex-row-reverse lg:justify-between">
         {/* Connect with us */}
         <div className="flex flex-col items-center lg:gap-2">
           <h6 className={titleStyles}>Connect with us</h6>

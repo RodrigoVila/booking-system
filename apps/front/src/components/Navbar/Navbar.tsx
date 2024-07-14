@@ -23,7 +23,7 @@ export const Navbar = ({ scrolledHalf }: NavbarProps) => {
         />
         <ul
           className={twMerge(
-            "flex items-center justify-end gap-3 font-cremis font-bold tracking-widest",
+            "flex items-center justify-end gap-3 font-bold tracking-widest",
             scrolledHalf ? "flex" : "hidden",
           )}
         >

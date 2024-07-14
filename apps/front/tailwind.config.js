@@ -5,8 +5,11 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        cremis: ["cremis", "sans-serif"],
-        cremisSig: ["cremisSig", "sans-serif"],
+        cremiss: ["cremiss", "sans-serif"],
+        "cremiss-sig": ["cremiss-sig", "sans-serif"],
+        "roboto-bold": ["roboto-bold", "sans-serif"],
+        "roboto-light": ["roboto-light", "sans-serif"],
+        "roboto-regular": ["roboto-regular", "sans-serif"],
       },
       colors: {
         black2: "#161616",

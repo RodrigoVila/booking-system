@@ -3,28 +3,28 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "cremis";
-  src: url("./fonts/CREMISSS.otf");
+  font-family: 'cremiss';
+  src: url('./fonts/cremiss.otf');
 }
 
 @font-face {
-  font-family: "cremisSig";
-  src: url("./fonts/CREMISS.signature.otf");
+  font-family: 'cremiss-sig';
+  src: url('./fonts/cremiss-sig.otf');
 }
 
 @font-face {
-  font-family: "robotoBold";
-  src: url("./fonts/Roboto-Bold.ttf");
+  font-family: 'roboto-bold';
+  src: url('./fonts/roboto-bold.ttf');
 }
 
 @font-face {
-  font-family: "robotoLight";
-  src: url("./fonts/Roboto-Light.ttf");
+  font-family: 'roboto-light';
+  src: url('./fonts/roboto-light.ttf');
 }
 
 @font-face {
-  font-family: "roboto";
-  src: url("./fonts/Roboto-Regular.ttf");
+  font-family: 'roboto-regular';
+  src: url('./fonts/roboto-regular.ttf');
 }
 
 html {

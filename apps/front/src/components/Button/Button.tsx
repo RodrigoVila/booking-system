@@ -1,15 +1,19 @@
+import { Spinner } from "@components/Spinner";
 import { ButtonHTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
 type ButtonVariantType = "rounded" | "square" | "outline" | "transparent";
+
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariantType;
+  isLoading?: boolean;
 };
 
 export const Button = ({
   className,
   children,
   variant = "rounded",
+  isLoading,
   ...rest
 }: ButtonProps) => {
   const baseStyles = "px-4 py-2 transition duration-300 ease-in-out";
@@ -27,9 +31,10 @@ export const Button = ({
   return (
     <button
       className={twMerge(baseStyles, selectedVariantStyles, className)}
+      disabled={isLoading || rest.disabled}
       {...rest}
     >
-      {children}
+      {isLoading ? <Spinner /> : children}
     </button>
   );
 };

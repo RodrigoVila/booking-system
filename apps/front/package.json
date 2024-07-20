@@ -11,6 +11,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "emailjs": "^4.0.3",
     "framer-motion": "^11.0.3",
     "lodash.throttle": "^4.1.1",
     "react": "^18.2.0",
@@ -18,7 +20,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
     "react-query": "^3.39.3",
-    "resend": "^3.4.0",
+    "react-toastify": "^10.0.5",
     "shared-types": "workspace:*",
     "ui-components": "workspace:*",
     "zod": "^3.22.4"

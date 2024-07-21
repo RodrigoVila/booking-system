@@ -5,27 +5,27 @@
 @layer {
   @font-face {
     font-family: "cremiss";
-    src: url("./fonts/cremiss.otf");
+    src: url("/cremiss.otf");
   }
 
   @font-face {
     font-family: "cremiss-sig";
-    src: url("./fonts/cremiss-sig.otf");
+    src: url("/cremiss-sig.otf");
   }
 
   @font-face {
     font-family: "roboto-bold";
-    src: url("./fonts/roboto-bold.ttf");
+    src: url("/roboto-bold.ttf");
   }
 
   @font-face {
     font-family: "roboto-light";
-    src: url("./fonts/roboto-light.ttf");
+    src: url("/roboto-light.ttf");
   }
 
   @font-face {
     font-family: "roboto-regular";
-    src: url("./fonts/roboto-regular.ttf");
+    src: url("/roboto-regular.ttf");
   }
 }
 

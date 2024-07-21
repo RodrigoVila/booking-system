@@ -17,7 +17,7 @@ export const Footer = () => {
           <h6 className={titleStyles}>Connect with us</h6>
           <div className="flex gap-4">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/massagestudionoord"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -27,7 +27,7 @@ export const Footer = () => {
               />
             </a>
             <a
-              href="https://wa.me/yourNumber"
+              href="https://wa.me/+31683864673"
               target="_blank"
               rel="noopener noreferrer"
             >

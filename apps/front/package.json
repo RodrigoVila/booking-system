@@ -47,13 +47,5 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
-  },
-  "overrides": {
-    "resend": {
-      "@react-email/render": "0.0.16-canary.0"
-    }
-  },
-  "resolutions": {
-    "resend/@react-email/render": "0.0.16-canary.0"
   }
 }

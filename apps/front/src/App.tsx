@@ -1,4 +1,6 @@
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ToastContainer } from "react-toastify";
+
 import { ServiceType } from "shared-types";
 
 import { Footer } from "@components/Footer";
@@ -10,6 +12,8 @@ import { Services } from "./pages/Services";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { AppProvider } from "@context";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const client = new QueryClient();
 
@@ -67,19 +71,22 @@ const App = () => {
   const { scrolledHalf } = useScrollPosition();
 
   return (
-    <QueryClientProvider client={client}>
-      <AppProvider>
-        <main className="h-full min-h-screen w-full">
-          <Navbar scrolledHalf={scrolledHalf} />
-          <Home scrolledHalf={scrolledHalf} />
-          <About />
-          <Services services={services} />
-          {/* <Booking services={services} /> */}
-          <Contact />
-          <Footer />
-        </main>
-      </AppProvider>
-    </QueryClientProvider>
+    <>
+      <QueryClientProvider client={client}>
+        <AppProvider>
+          <main className="h-full min-h-screen w-full">
+            <Navbar scrolledHalf={scrolledHalf} />
+            <Home scrolledHalf={scrolledHalf} />
+            <About />
+            <Services services={services} />
+            {/* <Booking services={services} /> */}
+            <Contact />
+            <Footer />
+          </main>
+        </AppProvider>
+      </QueryClientProvider>
+      <ToastContainer />
+    </>
   );
 };
 

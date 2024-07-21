@@ -1,10 +1,10 @@
 import { ChangeEvent, SyntheticEvent, useState } from "react";
-import { Resend } from "resend";
+import emailjs from "@emailjs/browser";
 
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 import { SectionTitle, SectionWrapper } from "@components/Section";
-import ContactEmail from "@components/EmailTemplates/ContactEmail";
+import { useToastNotifications } from "@hooks";
 
 const INITIAL_STATE = {
   name: "",
@@ -17,14 +17,16 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const Contact = () => {
   const [contactForm, setContactForm] = useState(INITIAL_STATE);
+  const [isLoading, setLoading] = useState(false);
 
-  const resend = new Resend(import.meta.env.VITE_RESEND_API_KEY);
-
-  const { name, email, subject, message } = contactForm;
+  const { showSuccessNotification, showErrorNotification } =
+    useToastNotifications();
 
   const isContactFormCompleted = Object.values(contactForm).every(
     (value) => value !== "",
   );
+
+  const clearForm = () => setContactForm(INITIAL_STATE);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -37,37 +39,45 @@ export const Contact = () => {
     e.preventDefault();
 
     if (!isContactFormCompleted) {
-      alert("All inputs required");
+      showErrorNotification("All inputs required");
       return;
     }
 
     if (!EMAIL_REGEX.test(contactForm.email)) {
-      alert("Please enter valid email");
+      showErrorNotification("Please enter valid email");
       return;
     }
 
     if (contactForm.message.length < 10) {
-      alert("Message should be longer than 10 characers");
+      showErrorNotification("Message should be longer than 10 characers");
       return;
     }
 
+    setLoading(true);
+
     try {
-      const response = await resend.emails.send({
-        from: email,
-        to: import.meta.env.VITE_STUDIO_EMAIL,
-        subject: "Nuevo contacto desde la web",
-        react: (
-          <ContactEmail
-            name={name}
-            email={email}
-            subject={subject}
-            message={message}
-          />
-        ),
-      });
-      console.log("Mail sent OK", response);
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        contactForm,
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        },
+      );
+
+      showSuccessNotification(
+        "Email sent successfully! We will respond as soon as possible.",
+      );
+
+      clearForm();
     } catch (error) {
+      showErrorNotification(
+        "Error sending email. Please try again later or contact us via WhatsApp or Instagram using the links below.",
+        { autoClose: 7000 },
+      );
       console.error("Error sending email: ", error);
+    } finally {
+      setLoading(true);
     }
   };
 
@@ -117,7 +127,7 @@ export const Contact = () => {
           variant="transparent"
           className="mt-4 font-semibold tracking-widest disabled:pointer-events-none disabled:opacity-30"
           disabled={!isContactFormCompleted}
-          // loading={isContactFormLoading}
+          isLoading={isLoading}
         >
           Send
         </Button>

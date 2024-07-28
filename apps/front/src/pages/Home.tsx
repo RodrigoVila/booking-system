@@ -17,6 +17,7 @@ export const Home = ({ scrolledHalf }: HomeProps) => {
   // For tablet users or smallers, the video will be shorter, because
   // the important parts of the video (the hands) move away earlier when the screen is narrower.
   useEffect(() => {
+    console.log({isOver768px})
     const video = videoRef.current;
     if (!video) return;
 
@@ -40,6 +41,7 @@ export const Home = ({ scrolledHalf }: HomeProps) => {
 
   return (
     <SectionWrapper id="home">
+      {/* <div className="absolute inset-0 bg-opacity-20 bg-black z-[1]" /> */}
       <video
         ref={videoRef}
         className={"absolute inset-0 h-full w-full object-cover"}

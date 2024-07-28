@@ -15,3 +15,5 @@
 apps/back/.env
 apps/front/.env
 apps/admin/.env
+
+.DS_Store

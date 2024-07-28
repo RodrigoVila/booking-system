@@ -28,9 +28,10 @@ export const TitleLogo = ({
   return (
     <div
       className={twMerge(
-        "flex items-center justify-center gap-4 transition-opacity duration-500",
+        "flex items-center justify-center transition-opacity duration-500",
         typeStyle,
         opacityStyle,
+        isNavbar && "gap-1" ,
         className,
       )}
     >
@@ -39,7 +40,7 @@ export const TitleLogo = ({
         alt="Massage studio logo"
         className={twMerge(
           "h-auto",
-          isNavbar ? "w-16" : "w-24 md:w-36",
+          isNavbar ? "w-16 mr-1" : "w-64 md:w-80 xl:w-64",
           onClick ? "cursor-pointer" : "",
         )}
         onClick={onClick}
@@ -48,10 +49,19 @@ export const TitleLogo = ({
         className={
           isNavbar
             ? "hidden text-xl md:flex"
-            : "px-4 text-center text-3xl md:text-6xl"
+            : "px-4 text-center text-5xl md:text-7xl xl:text-5xl mb-1"
         }
       >
-        Massage Studio NOORD
+        Massage Studio
+      </h3>
+      <h3
+        className={twMerge("tracking-wider",
+          isNavbar
+            ? "hidden text-xl md:flex"
+            : "px-4 text-center text-6xl md:text-8xl"
+        )}
+      >
+        NOORD
       </h3>
     </div>
   );

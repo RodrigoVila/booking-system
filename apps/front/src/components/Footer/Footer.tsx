@@ -10,8 +10,8 @@ export const Footer = () => {
   const titleStyles = "text-lg md:text-2xl mb-2 text-center";
 
   return (
-    <footer className="w-full bg-black px-6 py-4 lg:pb-12 lg:pt-8">
-      <div className="flex w-full flex-col flex-wrap items-center justify-center gap-8 text-lg text-white lg:flex-row-reverse lg:justify-between">
+    <footer className="w-full px-6 py-4 bg-earth-2 lg:pb-12 lg:pt-8">
+      <div className="flex flex-col flex-wrap items-center justify-center w-full gap-8 text-lg text-black lg:flex-row-reverse lg:justify-between">
         {/* Connect with us */}
         <div className="flex flex-col items-center lg:gap-2">
           <h6 className={titleStyles}>Connect with us</h6>
@@ -49,7 +49,7 @@ export const Footer = () => {
             />
             <h6 className={titleStyles}>Venue Awards</h6>
           </div>
-          <div className="-mt-3 flex justify-center gap-4">
+          <div className="flex justify-center gap-4 -mt-3">
             <img
               src="/tw-award-1.svg"
               className={imgStyle}

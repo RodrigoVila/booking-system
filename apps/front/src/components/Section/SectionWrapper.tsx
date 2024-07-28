@@ -18,7 +18,7 @@ export const SectionWrapper = ({
   return (
     <section
       className={twMerge(
-        "relative flex min-h-screen w-full flex-col items-center justify-center bg-cover bg-center bg-no-repeat py-24 md:py-40",
+        "relative flex min-h-[100dvh] w-full flex-col items-center justify-center bg-cover bg-center bg-no-repeat py-24 md:py-40",
         className,
       )}
       {...rest}

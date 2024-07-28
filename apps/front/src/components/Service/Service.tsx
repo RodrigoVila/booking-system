@@ -1,23 +1,28 @@
 import { useOnScreenAnimation } from "@hooks";
 import { motion, useAnimation } from "framer-motion";
-import { useAppContext } from "@hooks";
 
 import { ServiceType } from "shared-types";
 import { BookButton } from "@components/Button/BookButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type ServiceProps = {
   service: ServiceType;
 };
 
 export const Service = ({ service }: ServiceProps) => {
-  //Mostly for mobile users as there is no "hover" that shows the description.
   const [isActive, setIsActive] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
   const { ref, isVisible } = useOnScreenAnimation();
   const controls = useAnimation();
 
   const { title, description, imgSrc, options } = service;
+
+  useEffect(() => {
+    if (!isActive) {
+      setShowMore(false);
+    }
+  }, [isActive]);
 
   const detailVariants = {
     hidden: {
@@ -37,19 +42,34 @@ export const Service = ({ service }: ServiceProps) => {
     controls.start(isActive ? "hidden" : "visible");
   };
 
+  const handleShowMore = () => {
+    setShowMore((prev) => !prev);
+  };
+
+  const handleMouseLeave = () => {
+    setIsActive(false);
+    setShowMore(false);
+    controls.start("hidden");
+  };
+
+  const maxPreviewLength = 300;
+  const previewText = description.length > maxPreviewLength && !showMore
+    ? description.substring(0, maxPreviewLength) + "... "
+    : description;
+
   return (
     <motion.article
       ref={ref}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
       onHoverStart={() => controls.start("visible")}
-      onHoverEnd={() => controls.start("hidden")}
+      onHoverEnd={handleMouseLeave}
       onTap={handleTap}
-      className="relative flex max-w-4xl flex-col items-center overflow-hidden rounded-2xl border-2 border-transparent duration-1000 hover:border-white"
+      className="relative flex flex-col items-center max-w-4xl overflow-hidden duration-1000 border-2 border-transparent rounded-2xl hover:border-white"
     >
       <div
         style={{ backgroundImage: `url(${imgSrc})` }}
-        className="relative flex min-h-56 w-full flex-col items-center justify-center bg-cover bg-center px-2 text-center md:min-h-72"
+        className="relative flex flex-col items-center justify-center w-full px-2 py-8 text-center bg-center bg-cover min-h-56 md:min-h-72"
       >
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.3)]" />
         <h3 className="z-[1] text-3xl leading-[3.5rem] tracking-widest md:text-5xl">
@@ -62,7 +82,7 @@ export const Service = ({ service }: ServiceProps) => {
           initial="hidden"
           animate={controls}
         >
-          <div className="flex flex-col items-center gap-3 p-4">
+          <div className="flex flex-col items-center gap-4 p-4">
             <div className="flex items-center gap-2">
               {options.map((option, index) => (
                 <h6 key={index} className="text-2xl">
@@ -70,7 +90,25 @@ export const Service = ({ service }: ServiceProps) => {
                 </h6>
               ))}
             </div>
-            <p className="text-center tracking-wider">{description}</p>
+            <p className="tracking-wider text-center">
+              {previewText}
+              {description.length > maxPreviewLength && !showMore && (
+                <span
+                  onClick={handleShowMore}
+                  className="underline cursor-pointer"
+                >
+                  See More
+                </span>
+              )}
+              {showMore && (
+                <span
+                  onClick={handleShowMore}
+                  className="pl-1 underline cursor-pointer"
+                >
+                  See Less
+                </span>
+              )}
+            </p>
             {/* Button integrated within the animation */}
             <BookButton />
           </div>

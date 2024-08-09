@@ -85,9 +85,9 @@ export const Service = ({ service }: ServiceProps) => {
           <div className="flex flex-col items-center gap-4 p-4">
             <div className="flex items-center gap-2">
               {options.map((option, index) => (
-                <h6 key={index} className="text-2xl">
+                <p key={index} className="text-2xl">
                   {`${option.duration} ${index !== options.length - 1 ? "/" : "minutes"}`}
-                </h6>
+                </p>
               ))}
             </div>
             <p className="tracking-wider text-center">

@@ -1,7 +1,7 @@
 import { ChangeEvent, SyntheticEvent, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-import { Button } from "@components/Button";
+import { Button } from "@components/Buttons";
 import { Input } from "@components/Input";
 import { SectionTitle, SectionWrapper } from "@components/Section";
 import { useToastNotifications } from "@hooks";

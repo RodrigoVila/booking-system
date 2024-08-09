@@ -88,9 +88,9 @@ export const Contact = () => {
   const inputStyle =
     "mb-2 w-full rounded-md text-sm border-2 border-transparent bg-[rgba(255,255,255,0.2)] py-2 pl-2 placeholder:text-slate-300 placeholder:tracking-wider focus:border-white focus:outline-none";
   return (
-    <SectionWrapper id="contact" className="bg-[url('/hands.jpg')]">
+    <SectionWrapper id="contact" className="bg-[url('/hands-massage-studio-noord-amsterdam.jpeg')]">
       <SectionTitle>Contact</SectionTitle>
-      <div className="mt-8 flex w-full flex-col px-8 md:w-2/3 md:px-0 lg:w-1/2 xl:w-2/5">
+      <div className="flex flex-col w-full px-8 mt-8 md:w-2/3 md:px-0 lg:w-1/2 xl:w-2/5">
         <Input
           name="name"
           placeholder="Name"

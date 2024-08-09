@@ -15,7 +15,7 @@ export const Navbar = ({ scrolledHalf }: NavbarProps) => {
         navStyles,
       )}
     >
-      <nav className="relative flex w-full items-center justify-between">
+      <nav aria-label="Main navigation" className="relative flex items-center justify-between w-full">
         <TitleLogo
           type="navbar"
           scrolledHalf={scrolledHalf}

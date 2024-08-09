@@ -37,7 +37,7 @@ export const TitleLogo = ({
     >
       <img
         src="/logo-white.png"
-        alt="Massage studio logo"
+        alt="Massage Studio Noord logo - Navigate to homepage"
         className={twMerge(
           "h-auto",
           isNavbar ? "w-16 mr-1" : "w-64 md:w-80 xl:w-64",
@@ -45,7 +45,7 @@ export const TitleLogo = ({
         )}
         onClick={onClick}
       />
-      <h3
+      <h1
         className={
           isNavbar
             ? "hidden text-xl md:flex"
@@ -53,8 +53,8 @@ export const TitleLogo = ({
         }
       >
         Massage Studio
-      </h3>
-      <h3
+      </h1>
+      <h1
         className={twMerge("tracking-wider",
           isNavbar
             ? "hidden text-xl md:flex"
@@ -62,7 +62,7 @@ export const TitleLogo = ({
         )}
       >
         NOORD
-      </h3>
+      </h1>
     </div>
   );
 };

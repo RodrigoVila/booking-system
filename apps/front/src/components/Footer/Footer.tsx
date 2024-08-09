@@ -20,6 +20,7 @@ export const Footer = () => {
               href="https://www.instagram.com/massagestudionoord"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Follow us on Instagram"
             >
               <FaInstagram
                 size={iconSize}
@@ -30,6 +31,7 @@ export const Footer = () => {
               href="https://wa.me/+31683864673"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Contact us through whatsapp"
             >
               <FaWhatsapp
                 size={iconSize}
@@ -43,7 +45,7 @@ export const Footer = () => {
           <div className="flex items-center gap-2">
             <img
               src="/tw.png"
-              alt="Logo"
+              alt="treatwell logo for Massage Studio Noord in Amsterdam"
               width={isOver768px ? 148 : 120}
               className="mb-4 md:mb-3 lg:mb-4"
             />
@@ -53,21 +55,21 @@ export const Footer = () => {
             <img
               src="/tw-award-1.svg"
               className={imgStyle}
-              alt="Award 1"
+              alt="2023 Treatwell award for Massage Studio Noord in Amsterdam"
               height={60}
               width={60}
             />
             <img
               src="/tw-award-2.svg"
               className={imgStyle}
-              alt="Award 2"
+              alt="2021 Treatwell award for Massage Studio Noord in Amsterdam"
               height={60}
               width={60}
             />
             <img
               src="/tw-award-3.svg"
               className={imgStyle}
-              alt="Award 3"
+              alt="2020 Treatwell award for Massage Studio Noord in Amsterdam"
               height={60}
               width={60}
             />

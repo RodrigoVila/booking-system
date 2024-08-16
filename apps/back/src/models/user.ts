@@ -9,7 +9,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      sparse: true,
     },
     password: String,
     name: {
@@ -29,8 +28,8 @@ const userSchema = new Schema(
     role: {
       type: String,
       required: true,
-      enum: ["client", "employee", "admin"],
-      default: "client",
+      enum: ["admin", "user", "employee"],
+      default: "user",
     },
   },
   { timestamps: true }

@@ -1,14 +1,19 @@
 import { Request, Response } from "express";
-import { Timeslot } from "../models/timeslot"; // Adjust the import path as necessary
+import { Timeslot } from "../models/timeslot";
+import { TimeslotSchema, TimeslotType } from "shared-types"; // Ensure the correct import path
 
-// List timeslots for a given range
-const getTimeslots = async (req: Request, res: Response) => {
+export const getTimeslots = async (req: Request, res: Response) => {
   try {
-    const { startDate, endDate, employeeId } = req.query; // Example filters
-    const query = {
-      date: { $gte: startDate, $lte: endDate },
-      ...(employeeId && { employeeId: employeeId }),
+    const { startTime, endTime, employeeId } = req.query;
+    const query: any = {
+      date: {
+        $gte: new Date(startTime as string),
+        $lte: new Date(endTime as string),
+      },
     };
+    if (employeeId) {
+      query.employeeId = employeeId;
+    }
     const timeslots = await Timeslot.find(query);
     res.status(200).json({ success: true, data: timeslots });
   } catch (err) {
@@ -16,7 +21,7 @@ const getTimeslots = async (req: Request, res: Response) => {
   }
 };
 
-const getTimeslotById = async (req: Request, res: Response) => {
+export const getTimeslotById = async (req: Request, res: Response) => {
   try {
     const timeslot = await Timeslot.findById(req.params.id);
     if (!timeslot) {
@@ -29,9 +34,10 @@ const getTimeslotById = async (req: Request, res: Response) => {
   }
 };
 
-const createTimeslot = async (req: Request, res: Response) => {
+export const createTimeslot = async (req: Request, res: Response) => {
   try {
-    const newTimeslot = new Timeslot(req.body);
+    const parsedData = TimeslotSchema.parse(req.body); // Validate against Zod schema
+    const newTimeslot = new Timeslot(parsedData);
     const savedTimeslot = await newTimeslot.save();
     res.status(201).json({ success: true, data: savedTimeslot });
   } catch (err) {
@@ -39,12 +45,13 @@ const createTimeslot = async (req: Request, res: Response) => {
   }
 };
 
-const updateTimeslot = async (req: Request, res: Response) => {
+export const updateTimeslot = async (req: Request, res: Response) => {
   try {
+    const parsedData = TimeslotSchema.parse(req.body); // Validate against Zod schema
     const updatedTimeslot = await Timeslot.findByIdAndUpdate(
       req.params.id,
-      req.body,
-      { new: true } // Returns the modified document rather than the original.
+      parsedData,
+      { new: true }
     );
     if (!updatedTimeslot) {
       res.status(404).json({ success: false, message: "Timeslot not found" });
@@ -56,23 +63,15 @@ const updateTimeslot = async (req: Request, res: Response) => {
   }
 };
 
-const deleteTimeslot = async (req: Request, res: Response) => {
+export const deleteTimeslot = async (req: Request, res: Response) => {
   try {
     const deletedTimeslot = await Timeslot.findByIdAndDelete(req.params.id);
     if (!deletedTimeslot) {
       res.status(404).json({ success: false, message: "Timeslot not found" });
     } else {
-      res.status(200).json({ success: true, data: {} }); // Return empty object to indicate successful deletion
+      res.status(200).json({ success: true, data: {} });
     }
   } catch (err) {
     res.status(500).json({ success: false, message: (err as Error).message });
   }
-};
-
-export {
-  getTimeslots, // Assuming this is already defined as per your previous prompt
-  getTimeslotById,
-  createTimeslot,
-  updateTimeslot,
-  deleteTimeslot,
 };

@@ -11,6 +11,7 @@ const timeslotSchema = new Schema({
   },
   serviceType: {
     type: Schema.Types.ObjectId,
+    required: true,
     ref: "Service",
   },
   date: { type: Date, required: true },

@@ -5,14 +5,16 @@ export type BookingSchemaType = BookingType & Document;
 
 const serviceSchema = new Schema({
   name: { type: String, required: true },
-  duration: [{ type: Number, required: true }], // array of minutes
-  availableWindows: [
+  description: { type: String, required: true },
+  imgUrl: { type: String, required: true },
+  options: [
     {
-      start: { type: String, required: true }, // Format "HH:MM"
-      end: { type: String, required: true }, // Format "HH:MM"
+      duration: { type: Number, required: true },
+      price: { type: Number, required: true },
     },
   ],
-  restPeriod: { type: Number, required: true }, // In minutes, time after each service before the next booking
+  restPeriod: { type: Number, required: true },
+  employees: [{ type: Schema.Types.ObjectId, ref: "Employee" }],
 });
 
 const Service = model<BookingSchemaType>("Service", serviceSchema);

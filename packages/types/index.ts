@@ -17,8 +17,8 @@ export const BookingSchema = z.object({
 
 export const ServiceSchema = z.object({
   _id: z.string().optional(),
-  title: z.string(),
-  imgSrc: z.string(),
+  name: z.string(),
+  imgUrl: z.string(),
   description: z.string(),
   options: z.array(
     z.object({
@@ -26,16 +26,17 @@ export const ServiceSchema = z.object({
       price: z.number(),
     })
   ),
+  restPeriod: z.number(),
   employees: z.array(z.string()).optional(),
 });
 
 const AvailableDate = z.object({ start: z.string(), end: z.string() });
 
 export const EmployeeSchema = z.object({
-  name: z.string(),
-  email: z.string().optional(),
-  phoneNumber: z.string().optional(),
   _id: z.string().optional(),
+  name: z.string(),
+  email: z.string(),
+  phoneNumber: z.string(),
   imgUrl: z.string().optional(),
   weeklyAvailability: z
     .array(
@@ -60,6 +61,7 @@ export const UserSchema = z.object({
 
 export const TimeslotSchema = z.object({
   employeeId: z.string(),
+  serviceType: z.string(),
   date: z.date(),
   startTime: z.string(),
   endTime: z.string(),

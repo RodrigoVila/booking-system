@@ -56,6 +56,8 @@ export const UserSchema = z.object({
   name: z.string().min(1),
   lastName: z.string().min(1),
   role: z.enum(["admin", "user", "employee"]),
+  googleAccount: z.boolean().optional(),
+  confirmed: z.boolean().optional(),
   bookings: z.array(z.string()).optional(),
 });
 
@@ -68,11 +70,18 @@ export const TimeslotSchema = z.object({
   isBooked: z.boolean(),
 });
 
+export const PasswordRecoverySchema = z.object({
+  email: z.string(),
+  token: z.string(),
+  created: z.date(),
+});
+
 export type BookingType = z.infer<typeof BookingSchema>;
 export type ServiceType = z.infer<typeof ServiceSchema>;
 export type EmployeeType = z.infer<typeof EmployeeSchema>;
 export type UserType = z.infer<typeof UserSchema>;
 export type TimeslotType = z.infer<typeof TimeslotSchema>;
+export type PasswordRecovery = z.infer<typeof PasswordRecoverySchema>;
 
 type ValuePiece = Date | null;
 

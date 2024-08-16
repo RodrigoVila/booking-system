@@ -31,6 +31,8 @@ const userSchema = new Schema(
       enum: ["admin", "user", "employee"],
       default: "user",
     },
+    googleAccount: { type: Boolean, default: false },
+    confirmed: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

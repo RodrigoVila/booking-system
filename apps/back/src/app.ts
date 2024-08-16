@@ -1,3 +1,4 @@
+require("dotenv").config();
 import express, { Request, Response, NextFunction } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -5,11 +6,12 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 
+import { router as authRoutes } from "./routes/authRoutes";
 import { router as bookingRoutes } from "./routes/bookingRoutes";
+import { router as employeeRoutes } from "./routes/employeeRoutes";
 import { router as servicesRoutes } from "./routes/servicesRoutes";
 import { router as timeslotRoutes } from "./routes/timeslotRoutes";
 import { router as userRoutes } from "./routes/userRoutes";
-import { router as employeeRoutes } from "./routes/employeeRoutes";
 import { UserType } from "shared-types";
 
 export interface CustomRequest extends Request {
@@ -61,11 +63,12 @@ const limiter = rateLimit({
 app.use("/api", verifyPrivilegedUser, limiter);
 
 // Routes
+app.use("/api/auth", authRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/employees", employeeRoutes);
 app.use("/api/services", servicesRoutes);
 app.use("/api/timeslot", timeslotRoutes);
 app.use("/api/users", userRoutes);
-app.use("/api/employees", employeeRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running at port: ${PORT}`);

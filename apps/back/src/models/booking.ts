@@ -3,10 +3,17 @@ import { BookingType } from "shared-types";
 
 export type BookingSchemaType = BookingType & Document;
 
+enum BookingTypeStatus {
+  Pending = "pending",
+  Confirmed = "confirmed",
+  Cancelled = "cancelled",
+}
+
 const bookingSchema = new Schema(
   {
-    clientName: {
-      type: String,
+    client: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
     service: {
@@ -20,12 +27,17 @@ const bookingSchema = new Schema(
       required: true,
     },
     bookingStart: {
-      type: Date,
+      type: String,
       required: true,
     },
-    duration: {
-      type: Number, // Consider specifying in minutes
+    bookingEnd: {
+      type: String,
       required: true,
+    },
+    status: {
+      type: String,
+      enum: Object.values(BookingTypeStatus),
+      default: BookingTypeStatus.Pending,
     },
     paidAmount: Number,
     notes: String,

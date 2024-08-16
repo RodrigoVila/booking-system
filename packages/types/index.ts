@@ -2,11 +2,17 @@ import { z } from "zod";
 
 export const BookingSchema = z.object({
   _id: z.string().optional(),
-  clientName: z.string(),
-  serviceType: z.string(),
-  bookingDate: z.string(),
+  client: z.string(),
+  service: z.string(),
+  employee: z.string(),
+  bookingStart: z.string(),
+  bookingEnd: z.string(),
   paidAmount: z.number().optional(),
   notes: z.string().optional(),
+  status: z
+    .enum(["pending", "confirmed", "cancelled"])
+    .optional()
+    .default("pending"),
 });
 
 export const ServiceSchema = z.object({
@@ -32,15 +38,13 @@ export const EmployeeSchema = z.object({
   _id: z.string().optional(),
   imgUrl: z.string().optional(),
   weeklyAvailability: z
-    .object({
-      monday: AvailableDate,
-      tuesday: AvailableDate,
-      wednesday: AvailableDate,
-      thursday: AvailableDate,
-      friday: AvailableDate,
-      saturday: AvailableDate,
-      sunday: AvailableDate,
-    })
+    .array(
+      z.object({
+        day: z.string(),
+        start: z.string(),
+        end: z.string(),
+      })
+    )
     .optional(),
 });
 
@@ -50,6 +54,7 @@ export const UserSchema = z.object({
   password: z.string().min(1).optional(),
   name: z.string().min(1),
   lastName: z.string().min(1),
+  role: z.enum(["admin", "user", "employee"]),
   bookings: z.array(z.string()).optional(),
 });
 

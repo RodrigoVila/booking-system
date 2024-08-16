@@ -5,6 +5,8 @@ import {
   createBooking,
   updateBooking,
   deleteBooking,
+  cancelBooking,
+  rescheduleBooking,
 } from "../controllers/bookingController";
 
 const router = express.Router();
@@ -16,5 +18,9 @@ router
   .get(getBookingById)
   .put(updateBooking)
   .delete(deleteBooking);
+
+router.route("/:id/cancel").post(cancelBooking);
+
+router.route("/:id/reschedule").put(rescheduleBooking);
 
 export { router };

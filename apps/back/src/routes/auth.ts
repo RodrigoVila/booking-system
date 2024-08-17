@@ -7,7 +7,7 @@ import {
   passwordRecoveryAPI,
   passwordTokenValidation,
   updatePassword,
-} from "../controllers/authController";
+} from "../controllers/auth";
 
 const router = express.Router();
 

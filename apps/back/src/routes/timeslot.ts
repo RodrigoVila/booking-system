@@ -5,7 +5,7 @@ import {
   createTimeslot,
   updateTimeslot,
   deleteTimeslot,
-} from "../controllers/timeslotController";
+} from "../controllers/timeslot";
 
 const router = express.Router();
 

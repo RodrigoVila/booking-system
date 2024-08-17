@@ -6,12 +6,12 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 
-import { router as authRoutes } from "./routes/authRoutes";
-import { router as bookingRoutes } from "./routes/bookingRoutes";
-import { router as employeeRoutes } from "./routes/employeeRoutes";
-import { router as servicesRoutes } from "./routes/servicesRoutes";
-import { router as timeslotRoutes } from "./routes/timeslotRoutes";
-import { router as userRoutes } from "./routes/userRoutes";
+import { router as authRoutes } from "./routes/auth";
+import { router as bookingRoutes } from "./routes/booking";
+import { router as employeeRoutes } from "./routes/employee";
+import { router as servicesRoutes } from "./routes/services";
+import { router as timeslotRoutes } from "./routes/timeslot";
+import { router as userRoutes } from "./routes/user";
 import { UserType } from "shared-types";
 
 export interface CustomRequest extends Request {

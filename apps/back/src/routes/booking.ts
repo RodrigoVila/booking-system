@@ -7,7 +7,7 @@ import {
   deleteBooking,
   cancelBooking,
   rescheduleBooking,
-} from "../controllers/bookingController";
+} from "../controllers/booking";
 
 const router = express.Router();
 

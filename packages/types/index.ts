@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { BookingStatus, PaymentStatus, PaymentMethod } from "../constants";
 
 export const BookingSchema = z.object({
   _id: z.string().optional(),
@@ -10,9 +11,13 @@ export const BookingSchema = z.object({
   paidAmount: z.number().optional(),
   notes: z.string().optional(),
   status: z
-    .enum(["pending", "confirmed", "cancelled"])
+    .enum([
+      BookingStatus.Confirmed,
+      BookingStatus.Cancelled,
+      BookingStatus.Pending,
+    ])
     .optional()
-    .default("pending"),
+    .default(BookingStatus.Pending),
 });
 
 export const ServiceSchema = z.object({
@@ -29,8 +34,6 @@ export const ServiceSchema = z.object({
   restPeriod: z.number(),
   employees: z.array(z.string()).optional(),
 });
-
-const AvailableDate = z.object({ start: z.string(), end: z.string() });
 
 export const EmployeeSchema = z.object({
   _id: z.string().optional(),
@@ -76,12 +79,38 @@ export const PasswordRecoverySchema = z.object({
   created: z.date(),
 });
 
+export const PaymentSchema = z.object({
+  _id: z.string().optional(),
+  userId: z.string(),
+  orderId: z.string(),
+  amount: z.number(),
+  currency: z.string().default("USD"),
+  status: z
+    .enum([
+      PaymentStatus.Completed,
+      PaymentStatus.Failed,
+      PaymentStatus.Pending,
+      PaymentStatus.Refunded,
+    ])
+    .default(PaymentStatus.Pending),
+  paymentMethod: z.enum([
+    PaymentMethod.CreditCard,
+    PaymentMethod.Paypal,
+    PaymentMethod.Stripe,
+    PaymentMethod.Other,
+  ]),
+  transactionId: z.string(),
+  createdAt: z.date().default(() => new Date()),
+  updatedAt: z.date().default(() => new Date()),
+});
+
 export type BookingType = z.infer<typeof BookingSchema>;
 export type ServiceType = z.infer<typeof ServiceSchema>;
 export type EmployeeType = z.infer<typeof EmployeeSchema>;
 export type UserType = z.infer<typeof UserSchema>;
 export type TimeslotType = z.infer<typeof TimeslotSchema>;
-export type PasswordRecovery = z.infer<typeof PasswordRecoverySchema>;
+export type PasswordRecoveryType = z.infer<typeof PasswordRecoverySchema>;
+export type PaymentType = z.infer<typeof PaymentSchema>;
 
 type ValuePiece = Date | null;
 

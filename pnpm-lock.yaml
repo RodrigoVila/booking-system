@@ -131,6 +131,9 @@ importers:
       mongoose:
         specifier: ^8.1.1
         version: 8.3.2
+      shared-constants:
+        specifier: workspace:*
+        version: link:../../packages/constants
       shared-types:
         specifier: workspace:*
         version: link:../../packages/types
@@ -289,6 +292,8 @@ importers:
       vite:
         specifier: ^5.0.8
         version: 5.2.10
+
+  packages/constants: {}
 
   packages/types:
     dependencies:

@@ -12,8 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "shared-types": "workspace:*",
-    "shared-constants": "workspace:*",
     "@types/uuid": "^10.0.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -23,6 +21,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.3.0",
     "mongoose": "^8.1.1",
+    "shared-constants": "workspace:*",
+    "shared-types": "workspace:*",
+    "stripe": "^16.8.0",
     "uuid": "^10.0.0",
     "zod": "^3.22.4"
   },

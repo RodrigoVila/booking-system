@@ -3,7 +3,6 @@ import { EmployeeType } from "shared-types";
 
 export type EmployeeSchemaType = EmployeeType & Document;
 
-// Define the schema
 const employeeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },

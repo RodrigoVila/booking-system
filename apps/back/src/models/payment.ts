@@ -36,6 +36,6 @@ const paymentSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now },
 });
 
-const Employee = mongoose.model<PaymentchemaType>("Payment", paymentSchema);
+const Payment = mongoose.model<PaymentchemaType>("Payment", paymentSchema);
 
-export { Employee };
+export { Payment };

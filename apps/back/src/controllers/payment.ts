@@ -2,9 +2,7 @@ import { Request, Response } from "express";
 import { Payment } from "../models/payment";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2022-11-15",
-});
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export const getPayments = async (req: Request, res: Response) => {
   try {
@@ -54,7 +52,6 @@ export const createPayment = async (req: Request, res: Response) => {
 
     const savedPayment = await newPayment.save();
 
-    // Stripe payment creation (if using Stripe)
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -74,7 +71,6 @@ export const createPayment = async (req: Request, res: Response) => {
       cancel_url: `${req.headers.origin}/cancel`,
     });
 
-    // Update the payment with Stripe session ID
     savedPayment.transactionId = session.id;
     await savedPayment.save();
 

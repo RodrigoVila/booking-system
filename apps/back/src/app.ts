@@ -29,16 +29,21 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-const verifyPrivilegedUser = (
-  req: CustomRequest,
-  _: Response,
-  next: NextFunction
-) => {
-  if (req.user && (req.user.role === "admin" || req.user.role === "employee")) {
-    return next();
-  }
-  next("route");
-};
+// const verifyPrivilegedUser = (
+//   req: CustomRequest,
+//   _: Response,
+//   next: NextFunction
+// ) => {
+//   if (req.user && (req.user.role === "admin" || req.user.role === "employee")) {
+//     return next();
+//   }
+//   next("route");
+// };
+
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 min
+//   max: 200, // Limits to 200 request per every 15 min
+// });
 
 // Mongo DB Connection
 (async function connectToDB() {
@@ -55,11 +60,6 @@ const verifyPrivilegedUser = (
     process.exit(1);
   }
 })();
-
-// const limiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, // 15 min
-//   max: 200, // Limits to 200 request per every 15 min
-// });
 
 // // If user is not admin, then a request limiter is applied
 // app.use("/api", verifyPrivilegedUser, limiter);
